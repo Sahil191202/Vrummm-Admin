@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #F5F7F6;
+    --surface-main: #FFFFFF;
+    --surface-card: #FFFFFF;
+    --surface-sidebar: #171717;
+    --border-color: #E2E8E4;
+    --text-primary: #171717;
+    --text-muted: #5E6A64;
+    --accent-crimson: #A31C18;
+    --accent-crimson-hover: #8A1713;
+    --accent-shine: #0E7A4F;
+    --highlight-tint: #FBE9E8;
+    --color-success: #15803D;
+    --color-warning: #B45309;
+    --color-danger: #DC2626;
+  }
+
+  .dark {
+    --bg-main: #06110C;
+    --surface-main: #171717;
+    --surface-card: #171717;
+    --surface-sidebar: #0B1A13;
+    --border-color: #2A322D;
+    --text-primary: #F4F6F5;
+    --text-muted: #9AA6A0;
+    --accent-crimson: #A31C18;
+    --accent-crimson-hover: #C4271F;
+    --accent-shine: #1FD88A;
+    --highlight-tint: #2A0F0E;
+    --color-success: #22C55E;
+    --color-warning: #F5B301;
+    --color-danger: #FF5A52;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-card {
+    box-shadow: 0 0 24px rgba(31, 216, 138, 0.25);
+  }
+  .glow-button {
+    box-shadow: 0 0 20px rgba(163, 28, 24, 0.35);
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A322D;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A4740;
+}
