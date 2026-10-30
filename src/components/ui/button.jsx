@@ -18,7 +18,7 @@ export const buttonVariants = {
     ghost:
       'bg-transparent hover:bg-[#F5F7F6] dark:hover:bg-[#171717]/80 text-[#5E6A64] hover:text-[#171717] dark:text-[#9AA6A0] dark:hover:text-[#F4F6F5]',
     destructive:
-      'bg-[#FBE9E8] dark:bg-[#2A0F0E] text-[#DC2626] dark:text-[#FF5A52] border border-[#DC2626]/30 dark:border-[#FF5A52]/30 hover:bg-[#FBE9E8]/80 dark:hover:bg-[#FF5A52]/20 focus-visible:ring-[#DC2626] dark:focus-visible:ring-[#FF5A52]',
+      'bg-[#DC2626] text-white hover:bg-[#B91C1C] dark:bg-[#A31C18] dark:hover:bg-[#C4271F] focus-visible:ring-[#DC2626] shadow-sm',
     forest:
       'bg-[#15803D] dark:bg-[#22C55E] text-white dark:text-[#06110C] font-semibold hover:opacity-90 shadow-sm dark:shadow-card-glow focus-visible:ring-[#1FD88A]',
     accent:

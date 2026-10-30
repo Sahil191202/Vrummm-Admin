@@ -23,8 +23,9 @@ export function TabsList({ className, children, ...props }) {
     <div
       role="tablist"
       className={cn(
-        'inline-flex min-h-[44px] items-center justify-start rounded-xl p-1 bg-[#06110C] border border-[#2A3630] text-[#A3A3A3]',
-        'light:bg-[#F3F4F6] light:border-[#E5E7EB] light:text-[#525252]',
+        'inline-flex min-h-[44px] items-center justify-start rounded-xl p-1',
+        'bg-[#F5F7F6] border border-[#E2E8E4] text-[#5E6A64]',
+        'dark:bg-[#06110C] dark:border-[#2A3630] dark:text-[#9AA6A0]',
         className,
       )}
       {...props}
@@ -49,7 +50,7 @@ export function TabsTrigger({ value, className, children, ...props }) {
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A31C18]',
         isActive
           ? 'bg-[#A31C18] text-white shadow-sm'
-          : 'text-[#A3A3A3] hover:text-[#F5F5F5] hover:bg-[#171717]/60 light:text-[#525252] light:hover:text-[#171717]',
+          : 'text-[#5E6A64] hover:text-[#171717] hover:bg-white/80 dark:text-[#9AA6A0] dark:hover:text-[#F4F6F5] dark:hover:bg-[#171717]/60',
         className,
       )}
       {...props}

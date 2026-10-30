@@ -7,7 +7,7 @@ export function Skeleton({ className, ...props }) {
       aria-live="polite"
       aria-busy="true"
       className={cn(
-        'animate-pulse rounded-md bg-[#0C1B14] border border-[#1C2721] light:bg-[#E5E7EB] light:border-transparent',
+        'animate-pulse rounded-md bg-[#E2E8E4] border border-[#E2E8E4]/60 dark:bg-[#0C1B14] dark:border-[#1C2721]',
         className,
       )}
       {...props}

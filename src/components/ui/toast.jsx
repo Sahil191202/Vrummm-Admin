@@ -36,19 +36,19 @@ export function ToastProvider({ children }) {
               role="alert"
               className={cn(
                 'pointer-events-auto flex items-start gap-3 p-4 rounded-xl border shadow-xl transition-all',
-                'bg-[#06110C] text-[#F5F5F5] border-[#2A3630] light:bg-white light:border-[#E5E7EB] light:text-[#171717]',
-                isError && 'border-[#F87171]/40 bg-[#171717]',
-                isSuccess && 'border-[#22C55E]/40 bg-[#06110C]',
+                'bg-white text-[#171717] border-[#E2E8E4] dark:bg-[#06110C] dark:text-[#F4F6F5] dark:border-[#2A3630]',
+                isError && 'border-[#DC2626]/40 bg-[#FBE9E8] dark:bg-[#2A0F0E] text-[#DC2626] dark:text-[#FF5A52]',
+                isSuccess && 'border-[#15803D]/40 bg-[#F5F7F6] dark:bg-[#06110C] text-[#15803D] dark:text-[#1FD88A]',
               )}
             >
-              {isError && <AlertCircle className="w-5 h-5 text-[#F87171] flex-shrink-0 mt-0.5" />}
-              {isSuccess && <CheckCircle2 className="w-5 h-5 text-[#22C55E] flex-shrink-0 mt-0.5" />}
-              {!isError && !isSuccess && <Info className="w-5 h-5 text-[#34D399] flex-shrink-0 mt-0.5" />}
+              {isError && <AlertCircle className="w-5 h-5 text-[#DC2626] dark:text-[#FF5A52] flex-shrink-0 mt-0.5" />}
+              {isSuccess && <CheckCircle2 className="w-5 h-5 text-[#15803D] dark:text-[#22C55E] flex-shrink-0 mt-0.5" />}
+              {!isError && !isSuccess && <Info className="w-5 h-5 text-[#0E7A4F] dark:text-[#1FD88A] flex-shrink-0 mt-0.5" />}
 
               <div className="flex-1 space-y-0.5">
                 {toast.title && <p className="text-xs font-bold leading-tight">{toast.title}</p>}
                 {toast.description && (
-                  <p className="text-xs text-[#A3A3A3] light:text-[#525252] leading-snug">
+                  <p className="text-xs text-[#5E6A64] dark:text-[#9AA6A0] leading-snug">
                     {toast.description}
                   </p>
                 )}

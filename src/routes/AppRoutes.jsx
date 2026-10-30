@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from '../pages/Login';
 import { Dashboard } from '../pages/Dashboard';
+import { BookingsPage } from '../pages/BookingsPage';
+import { BookingDetailPage } from '../pages/BookingDetailPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { NotFound } from '../pages/NotFound';
 import { AdminLayout } from '../components/layout/AdminLayout';
@@ -35,12 +37,16 @@ export function AppRoutes() {
           path="bookings"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.RIDES_READ}>
-              <PlaceholderPage
-                title="Booking & Ride Monitoring"
-                phase="Phase B"
-                requiredPermission={PERMISSIONS.RIDES_READ}
-                description="Live ride tracking, search filters, state transitions, exclusion reasons & manual resolutions"
-              />
+              <BookingsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="bookings/:bookingId"
+          element={
+            <ProtectedRoute requiredPermission={PERMISSIONS.RIDES_READ}>
+              <BookingDetailPage />
             </ProtectedRoute>
           }
         />

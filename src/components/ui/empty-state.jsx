@@ -13,18 +13,18 @@ export function EmptyState({
     <div
       className={cn(
         'flex flex-col items-center justify-center p-8 sm:p-12 text-center rounded-2xl border',
-        'bg-[#091510] border-[#2A3630] text-[#F5F5F5]',
-        'light:bg-white light:border-[#E5E7EB] light:text-[#171717]',
+        'bg-white border-[#E2E8E4] text-[#171717] shadow-sm',
+        'dark:bg-[#091510] dark:border-[#2A3630] dark:text-[#F4F6F5]',
         className,
       )}
     >
-      <div className="w-12 h-12 rounded-xl bg-[#06110C] border border-[#2A3630] flex items-center justify-center text-[#A3A3A3] mb-4 light:bg-[#F3F4F6] light:border-[#E5E7EB] light:text-[#525252]">
+      <div className="w-12 h-12 rounded-xl bg-[#F5F7F6] border border-[#E2E8E4] text-[#5E6A64] flex items-center justify-center mb-4 dark:bg-[#06110C] dark:border-[#2A3630] dark:text-[#9AA6A0]">
         <Icon className="w-6 h-6" />
       </div>
-      <h3 className="text-sm font-semibold mb-1 text-[#F5F5F5] light:text-[#171717]">
+      <h3 className="text-sm font-semibold mb-1 text-[#171717] dark:text-[#F4F6F5]">
         {title}
       </h3>
-      <p className="text-xs text-[#A3A3A3] max-w-sm mb-5 light:text-[#525252]">
+      <p className="text-xs text-[#5E6A64] dark:text-[#9AA6A0] max-w-sm mb-5">
         {description}
       </p>
       {action && <div>{action}</div>}
