@@ -277,6 +277,330 @@ const MOCK_DISPATCH_ROUNDS = {
   ],
 };
 
+const MOCK_CAPTAINS = [
+  {
+    _id: '65f02c0123456789012345c1',
+    userId: {
+      displayName: 'Suresh Kamble',
+      email: 'suresh.k@example.com',
+      phone: '+919820011111',
+    },
+    vehicleType: 'BIKE',
+    approvalStatus: 'PENDING',
+    isOnline: false,
+    vehicle: {
+      make: 'Bajaj',
+      model: 'Pulsar 150',
+      year: 2022,
+      registrationNumber: 'MH02BZ4921',
+      color: 'Black',
+    },
+    totalRides: 0,
+    totalEarnedPaise: 0,
+    rating: null,
+    ratingCount: 0,
+    createdAt: '2026-10-25T10:00:00.000Z',
+  },
+  {
+    _id: '65f02c0123456789012345c2',
+    userId: {
+      displayName: 'Ganesh More',
+      email: 'ganesh.m@example.com',
+      phone: '+919820022222',
+    },
+    vehicleType: 'AUTO',
+    approvalStatus: 'APPROVED',
+    isOnline: true,
+    vehicle: {
+      make: 'Bajaj',
+      model: 'Compact 4S',
+      year: 2021,
+      registrationNumber: 'MH03CK1928',
+      color: 'Yellow/Black',
+    },
+    totalRides: 342,
+    totalEarnedPaise: 3840000,
+    rating: 4.85,
+    ratingCount: 290,
+    approvedAt: '2026-09-15T12:00:00.000Z',
+    createdAt: '2026-09-10T08:30:00.000Z',
+  },
+  {
+    _id: '65f02c0123456789012345c3',
+    userId: {
+      displayName: 'Pravin Rane',
+      email: 'pravin.r@example.com',
+      phone: '+919820033333',
+    },
+    vehicleType: 'CAB',
+    approvalStatus: 'REJECTED',
+    isOnline: false,
+    rejectionReason: 'Driving licence copy expired and Aadhaar back is unreadable.',
+    vehicle: {
+      make: 'Maruti Suzuki',
+      model: 'WagonR',
+      year: 2020,
+      registrationNumber: 'MH01DE8831',
+      color: 'White',
+    },
+    totalRides: 12,
+    totalEarnedPaise: 145000,
+    rating: 3.9,
+    ratingCount: 10,
+    createdAt: '2026-10-15T14:20:00.000Z',
+  },
+  {
+    _id: '65f02c0123456789012345c4',
+    userId: {
+      displayName: 'Rajesh Varma',
+      email: 'rajesh.v@example.com',
+      phone: '+919820044444',
+    },
+    vehicleType: 'BIKE',
+    approvalStatus: 'PENDING',
+    isOnline: false,
+    vehicle: {
+      make: 'Hero',
+      model: 'Splendor Plus',
+      year: 2023,
+      registrationNumber: 'MH04EF5512',
+      color: 'Blue',
+    },
+    totalRides: 0,
+    totalEarnedPaise: 0,
+    rating: null,
+    ratingCount: 0,
+    createdAt: '2026-10-28T11:15:00.000Z',
+  },
+  {
+    _id: '65f02c0123456789012345c5',
+    userId: {
+      displayName: 'Imran Shaikh',
+      email: 'imran.s@example.com',
+      phone: '+919820055555',
+    },
+    vehicleType: 'AUTO',
+    approvalStatus: 'SUSPENDED',
+    isOnline: false,
+    rejectionReason: 'Vehicle insurance expired. Periodic re-verification required.',
+    vehicle: {
+      make: 'Piaggio',
+      model: 'Ape City',
+      year: 2019,
+      registrationNumber: 'MH02FG9943',
+      color: 'Green',
+    },
+    totalRides: 689,
+    totalEarnedPaise: 7920000,
+    rating: 4.2,
+    ratingCount: 520,
+    createdAt: '2026-07-04T09:00:00.000Z',
+  },
+];
+
+const MOCK_DOCUMENTS = {
+  '65f02c0123456789012345c1': [
+    {
+      _id: '65f02d0123456789012345d1',
+      captainId: '65f02c0123456789012345c1',
+      type: 'AADHAAR_FRONT',
+      status: 'APPROVED',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1250000,
+      storagePublicId: 'vrumm/captains/c1/aadhaar_front',
+      previewUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:05:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d2',
+      captainId: '65f02c0123456789012345c1',
+      type: 'AADHAAR_BACK',
+      status: 'APPROVED',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1100000,
+      storagePublicId: 'vrumm/captains/c1/aadhaar_back',
+      previewUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:05:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d3',
+      captainId: '65f02c0123456789012345c1',
+      type: 'DRIVING_LICENCE_FRONT',
+      status: 'PENDING',
+      expiresAt: '2026-11-15T00:00:00.000Z', // Expiring in 16 days!
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1800000,
+      storagePublicId: 'vrumm/captains/c1/dl_front',
+      previewUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:10:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d4',
+      captainId: '65f02c0123456789012345c1',
+      type: 'DRIVING_LICENCE_BACK',
+      status: 'PENDING',
+      expiresAt: '2026-11-15T00:00:00.000Z',
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1750000,
+      storagePublicId: 'vrumm/captains/c1/dl_back',
+      previewUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:10:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d5',
+      captainId: '65f02c0123456789012345c1',
+      type: 'VEHICLE_RC',
+      status: 'APPROVED',
+      expiresAt: '2032-04-10T00:00:00.000Z',
+      fileFormat: 'application/pdf',
+      fileSizeBytes: 2400000,
+      storagePublicId: 'vrumm/captains/c1/vehicle_rc',
+      previewUrl: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:15:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d6',
+      captainId: '65f02c0123456789012345c1',
+      type: 'VEHICLE_INSURANCE',
+      status: 'PENDING',
+      expiresAt: '2027-08-20T00:00:00.000Z',
+      fileFormat: 'application/pdf',
+      fileSizeBytes: 2100000,
+      storagePublicId: 'vrumm/captains/c1/insurance',
+      previewUrl: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:15:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d7',
+      captainId: '65f02c0123456789012345c1',
+      type: 'PROFILE_PHOTO',
+      status: 'APPROVED',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 950000,
+      storagePublicId: 'vrumm/captains/c1/profile',
+      previewUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-25T10:20:00.000Z',
+    },
+  ],
+  '65f02c0123456789012345c2': [
+    {
+      _id: '65f02d0123456789012345d8',
+      captainId: '65f02c0123456789012345c2',
+      type: 'AADHAAR_FRONT',
+      status: 'APPROVED',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1200000,
+      storagePublicId: 'vrumm/captains/c2/aadhaar_front',
+      previewUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:00:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345d9',
+      captainId: '65f02c0123456789012345c2',
+      type: 'AADHAAR_BACK',
+      status: 'APPROVED',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1200000,
+      storagePublicId: 'vrumm/captains/c2/aadhaar_back',
+      previewUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:00:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345da',
+      captainId: '65f02c0123456789012345c2',
+      type: 'DRIVING_LICENCE_FRONT',
+      status: 'APPROVED',
+      expiresAt: '2029-06-15T00:00:00.000Z',
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1600000,
+      storagePublicId: 'vrumm/captains/c2/dl_front',
+      previewUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:10:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345db',
+      captainId: '65f02c0123456789012345c2',
+      type: 'DRIVING_LICENCE_BACK',
+      status: 'APPROVED',
+      expiresAt: '2029-06-15T00:00:00.000Z',
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1550000,
+      storagePublicId: 'vrumm/captains/c2/dl_back',
+      previewUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:10:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345dc',
+      captainId: '65f02c0123456789012345c2',
+      type: 'VEHICLE_RC',
+      status: 'APPROVED',
+      expiresAt: '2031-10-10T00:00:00.000Z',
+      fileFormat: 'application/pdf',
+      fileSizeBytes: 2200000,
+      storagePublicId: 'vrumm/captains/c2/vehicle_rc',
+      previewUrl: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:15:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345dd',
+      captainId: '65f02c0123456789012345c2',
+      type: 'VEHICLE_INSURANCE',
+      status: 'APPROVED',
+      expiresAt: '2027-02-14T00:00:00.000Z',
+      fileFormat: 'application/pdf',
+      fileSizeBytes: 2300000,
+      storagePublicId: 'vrumm/captains/c2/insurance',
+      previewUrl: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:15:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345de',
+      captainId: '65f02c0123456789012345c2',
+      type: 'PROFILE_PHOTO',
+      status: 'APPROVED',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 980000,
+      storagePublicId: 'vrumm/captains/c2/profile',
+      previewUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-09-10T09:20:00.000Z',
+    },
+  ],
+  '65f02c0123456789012345c3': [
+    {
+      _id: '65f02d0123456789012345df',
+      captainId: '65f02c0123456789012345c3',
+      type: 'DRIVING_LICENCE_FRONT',
+      status: 'REJECTED',
+      rejectionReason: 'Licence expired on 2026-10-10. Valid unexpired driving licence required.',
+      expiresAt: '2026-10-10T00:00:00.000Z', // Expired!
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 1400000,
+      storagePublicId: 'vrumm/captains/c3/dl_front',
+      previewUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-15T14:30:00.000Z',
+    },
+    {
+      _id: '65f02d0123456789012345e0',
+      captainId: '65f02c0123456789012345c3',
+      type: 'AADHAAR_BACK',
+      status: 'REJECTED',
+      rejectionReason: 'Image is blurred. Address details are completely illegible.',
+      expiresAt: null,
+      fileFormat: 'image/jpeg',
+      fileSizeBytes: 890000,
+      storagePublicId: 'vrumm/captains/c3/aadhaar_back',
+      previewUrl: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&auto=format&fit=crop&q=80',
+      createdAt: '2026-10-15T14:30:00.000Z',
+    },
+  ],
+};
+
 export async function handleMockRequest(url, options = {}) {
   const method = (options.method || 'GET').toUpperCase();
   const requestId = 'mock-req-' + Math.random().toString(36).slice(2, 9);
@@ -426,6 +750,149 @@ export async function handleMockRequest(url, options = {}) {
     return {
       status: 200,
       body: { success: true, data: rounds, requestId },
+    };
+  }
+
+  // --- Phase C: Captains & Document Review Endpoints ---
+
+  // List Captains
+  if (url.includes('/captains') && !url.includes('/captains/') && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const page = Number(parsed.searchParams.get('page')) || 1;
+    const limit = Number(parsed.searchParams.get('limit')) || 20;
+    const approvalStatus = parsed.searchParams.get('approvalStatus');
+    const search = parsed.searchParams.get('search')?.toLowerCase();
+
+    let filtered = [...MOCK_CAPTAINS];
+    if (approvalStatus && approvalStatus !== 'ALL') {
+      filtered = filtered.filter((c) => c.approvalStatus === approvalStatus);
+    }
+    if (search) {
+      filtered = filtered.filter(
+        (c) =>
+          c.userId?.displayName?.toLowerCase().includes(search) ||
+          c.userId?.email?.toLowerCase().includes(search) ||
+          c.userId?.phone?.includes(search) ||
+          c.vehicle?.registrationNumber?.toLowerCase().includes(search),
+      );
+    }
+
+    const start = (page - 1) * limit;
+    const paginated = filtered.slice(start, start + limit);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: paginated,
+        meta: { total: filtered.length, page, pages: Math.ceil(filtered.length / limit) || 1, limit },
+        requestId,
+      },
+    };
+  }
+
+  // Single Captain Profile
+  const captainMatch = url.match(/\/captains\/([a-f\d]{24})$/i);
+  if (captainMatch && method === 'GET') {
+    const captainId = captainMatch[1];
+    const captain = MOCK_CAPTAINS.find((c) => c._id === captainId) || MOCK_CAPTAINS[0];
+    return {
+      status: 200,
+      body: { success: true, data: captain, requestId },
+    };
+  }
+
+  // Set Captain Approval Status (with written reason for audit)
+  const captainApprovalMatch = url.match(/\/captains\/([a-f\d]{24})\/approval$/i);
+  if (captainApprovalMatch && method === 'PATCH') {
+    const captainId = captainApprovalMatch[1];
+    const captain = MOCK_CAPTAINS.find((c) => c._id === captainId);
+    if (captain) {
+      captain.approvalStatus = body.status;
+      if (body.reason) captain.rejectionReason = body.reason;
+      if (body.status === 'APPROVED') {
+        captain.approvedAt = new Date().toISOString();
+        captain.rejectionReason = null;
+      }
+    }
+    return {
+      status: 200,
+      body: { success: true, data: captain, requestId },
+    };
+  }
+
+  // List Documents for Captain
+  const captainDocsMatch = url.match(/\/documents\/captain\/([a-f\d]{24})/i);
+  if (captainDocsMatch && method === 'GET') {
+    const captainId = captainDocsMatch[1];
+    const docs = MOCK_DOCUMENTS[captainId] || MOCK_DOCUMENTS['65f02c0123456789012345c1'] || [];
+    const approvedTypes = new Set(docs.filter((d) => d.status === 'APPROVED').map((d) => d.type));
+    const requiredTypes = [
+      'AADHAAR_FRONT',
+      'AADHAAR_BACK',
+      'DRIVING_LICENCE_FRONT',
+      'DRIVING_LICENCE_BACK',
+      'VEHICLE_RC',
+      'VEHICLE_INSURANCE',
+      'PROFILE_PHOTO',
+    ];
+    const missingRequired = requiredTypes.filter((t) => !approvedTypes.has(t));
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: { documents: docs, missingRequired },
+        requestId,
+      },
+    };
+  }
+
+  // Review a Document (Approve or Reject with reason)
+  const docReviewMatch = url.match(/\/documents\/([a-f\d]{24})\/review/i);
+  if (docReviewMatch && method === 'PATCH') {
+    const docId = docReviewMatch[1];
+    let updatedDoc = null;
+    for (const captainId in MOCK_DOCUMENTS) {
+      const d = MOCK_DOCUMENTS[captainId].find((x) => x._id === docId);
+      if (d) {
+        d.status = body.status;
+        d.rejectionReason = body.status === 'REJECTED' ? body.rejectionReason : null;
+        d.reviewedAt = new Date().toISOString();
+        updatedDoc = d;
+        break;
+      }
+    }
+    return {
+      status: 200,
+      body: { success: true, data: updatedDoc || { _id: docId, status: body.status }, requestId },
+    };
+  }
+
+  // Get Signed Document URL (Preview)
+  const docUrlMatch = url.match(/\/documents\/([a-f\d]{24})\/url/i);
+  if (docUrlMatch && method === 'GET') {
+    const docId = docUrlMatch[1];
+    let foundDoc = null;
+    for (const captainId in MOCK_DOCUMENTS) {
+      const d = MOCK_DOCUMENTS[captainId]?.find((x) => x._id === docId);
+      if (d) {
+        foundDoc = d;
+        break;
+      }
+    }
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: {
+          url: foundDoc?.previewUrl || 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=600&auto=format&fit=crop&q=80',
+          expiresInSeconds: 300,
+          documentType: foundDoc?.type || 'DOCUMENT',
+          status: foundDoc?.status || 'PENDING',
+        },
+        requestId,
+      },
     };
   }
 

@@ -4,6 +4,8 @@ import { Login } from '../pages/Login';
 import { Dashboard } from '../pages/Dashboard';
 import { BookingsPage } from '../pages/BookingsPage';
 import { BookingDetailPage } from '../pages/BookingDetailPage';
+import { DocumentsPage } from '../pages/DocumentsPage';
+import { CaptainDocumentDetailPage } from '../pages/CaptainDocumentDetailPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { NotFound } from '../pages/NotFound';
 import { AdminLayout } from '../components/layout/AdminLayout';
@@ -55,12 +57,16 @@ export function AppRoutes() {
           path="documents"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.DOCUMENTS_REVIEW}>
-              <PlaceholderPage
-                title="Captain & Vehicle Document Review"
-                phase="Phase C"
-                requiredPermission={PERMISSIONS.DOCUMENTS_REVIEW}
-                description="Short-lived signed document viewing, approvals, rejections with mandatory reasons & expiry tracking"
-              />
+              <DocumentsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="documents/:captainId"
+          element={
+            <ProtectedRoute requiredPermission={PERMISSIONS.DOCUMENTS_REVIEW}>
+              <CaptainDocumentDetailPage />
             </ProtectedRoute>
           }
         />
