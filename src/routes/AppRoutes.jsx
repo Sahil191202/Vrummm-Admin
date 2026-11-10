@@ -6,6 +6,8 @@ import { BookingsPage } from '../pages/BookingsPage';
 import { BookingDetailPage } from '../pages/BookingDetailPage';
 import { DocumentsPage } from '../pages/DocumentsPage';
 import { CaptainDocumentDetailPage } from '../pages/CaptainDocumentDetailPage';
+import { FaresPage } from '../pages/FaresPage';
+import { RevenuePlansPage } from '../pages/RevenuePlansPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { NotFound } from '../pages/NotFound';
 import { AdminLayout } from '../components/layout/AdminLayout';
@@ -75,12 +77,7 @@ export function AppRoutes() {
           path="fares"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.FARES_READ}>
-              <PlaceholderPage
-                title="Fare & Dispatch Settings"
-                phase="Phase D"
-                requiredPermission={PERMISSIONS.FARES_READ}
-                description="Versioned fare matrices, pickup radius, relative-distance rule toggles & server-side previews"
-              />
+              <FaresPage />
             </ProtectedRoute>
           }
         />
@@ -89,15 +86,11 @@ export function AppRoutes() {
           path="revenue"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.REVENUE_PLANS_READ}>
-              <PlaceholderPage
-                title="Revenue Plans"
-                phase="Phase D"
-                requiredPermission={PERMISSIONS.REVENUE_PLANS_READ}
-                description="Commission rates in basis points (300 to 350 bps) and simulated subscription tiers"
-              />
+              <RevenuePlansPage />
             </ProtectedRoute>
           }
         />
+        <Route path="revenue-plans" element={<Navigate to="/revenue" replace />} />
 
         <Route
           path="promotions"

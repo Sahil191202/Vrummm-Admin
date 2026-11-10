@@ -601,6 +601,202 @@ const MOCK_DOCUMENTS = {
   ],
 };
 
+let MOCK_FARE_CONFIGS = [
+  {
+    _id: '65f0fare0001',
+    vehicleType: 'BIKE',
+    zone: 'mumbai',
+    version: 2,
+    effectiveFrom: '2026-06-01T00:00:00.000Z',
+    effectiveTo: null,
+    isActive: true,
+    baseFarePaise: 2500, // ₹25.00
+    perKmPaise: 1200, // ₹12.00 / km
+    perMinutePaise: 150, // ₹1.50 / min
+    minimumFarePaise: 3000, // ₹30.00
+    minimumBillableDistanceMetres: 1500,
+    waitingGracePeriodMinutes: 3,
+    waitingChargePerMinutePaise: 150,
+    surgeEnabled: false,
+    surgeMultiplierMax: 1.5,
+    taxes: [{ label: 'GST', basisPoints: 500 }],
+    createdBy: { displayName: 'Super Admin', email: 'superadmin@vrumm.dev' },
+    reason: 'Annual fuel price index adjustment for Mumbai urban zone',
+    createdAt: '2026-06-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0fare0002',
+    vehicleType: 'BIKE',
+    zone: 'mumbai',
+    version: 1,
+    effectiveFrom: '2026-01-01T00:00:00.000Z',
+    effectiveTo: '2026-06-01T00:00:00.000Z',
+    isActive: false,
+    baseFarePaise: 2000,
+    perKmPaise: 1000,
+    perMinutePaise: 100,
+    minimumFarePaise: 2500,
+    minimumBillableDistanceMetres: 1500,
+    waitingGracePeriodMinutes: 3,
+    waitingChargePerMinutePaise: 100,
+    surgeEnabled: false,
+    surgeMultiplierMax: 1.0,
+    taxes: [{ label: 'GST', basisPoints: 500 }],
+    createdBy: { displayName: 'Super Admin', email: 'superadmin@vrumm.dev' },
+    reason: 'Initial platform launch tariff for Bike Taxi',
+    createdAt: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0fare0003',
+    vehicleType: 'AUTO',
+    zone: 'mumbai',
+    version: 2,
+    effectiveFrom: '2026-05-15T00:00:00.000Z',
+    effectiveTo: null,
+    isActive: true,
+    baseFarePaise: 3500, // ₹35.00
+    perKmPaise: 1500, // ₹15.00 / km
+    perMinutePaise: 200, // ₹2.00 / min
+    minimumFarePaise: 4000, // ₹40.00
+    minimumBillableDistanceMetres: 1800,
+    waitingGracePeriodMinutes: 3,
+    waitingChargePerMinutePaise: 150,
+    surgeEnabled: false,
+    surgeMultiplierMax: 1.5,
+    taxes: [{ label: 'GST', basisPoints: 500 }],
+    createdBy: { displayName: 'Ops Agent', email: 'ops@vrumm.dev' },
+    reason: 'MMRTA regulated auto meter revision alignment',
+    createdAt: '2026-05-15T00:00:00.000Z',
+  },
+  {
+    _id: '65f0fare0004',
+    vehicleType: 'AUTO',
+    zone: 'mumbai',
+    version: 1,
+    effectiveFrom: '2026-01-01T00:00:00.000Z',
+    effectiveTo: '2026-05-15T00:00:00.000Z',
+    isActive: false,
+    baseFarePaise: 3000,
+    perKmPaise: 1400,
+    perMinutePaise: 150,
+    minimumFarePaise: 3500,
+    minimumBillableDistanceMetres: 1500,
+    waitingGracePeriodMinutes: 3,
+    waitingChargePerMinutePaise: 100,
+    surgeEnabled: false,
+    surgeMultiplierMax: 1.0,
+    taxes: [{ label: 'GST', basisPoints: 500 }],
+    createdBy: { displayName: 'Super Admin', email: 'superadmin@vrumm.dev' },
+    reason: 'Initial platform launch auto tariff',
+    createdAt: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0fare0005',
+    vehicleType: 'CAB',
+    zone: 'mumbai',
+    version: 1,
+    effectiveFrom: '2026-01-01T00:00:00.000Z',
+    effectiveTo: null,
+    isActive: true,
+    baseFarePaise: 6000, // ₹60.00
+    perKmPaise: 2200, // ₹22.00 / km
+    perMinutePaise: 250, // ₹2.50 / min
+    minimumFarePaise: 8000, // ₹80.00
+    minimumBillableDistanceMetres: 2500,
+    waitingGracePeriodMinutes: 5,
+    waitingChargePerMinutePaise: 200,
+    surgeEnabled: false,
+    surgeMultiplierMax: 2.0,
+    taxes: [{ label: 'GST', basisPoints: 500 }],
+    createdBy: { displayName: 'Super Admin', email: 'superadmin@vrumm.dev' },
+    reason: 'Initial Mumbai AC Cab baseline tariff',
+    createdAt: '2026-01-01T00:00:00.000Z',
+  },
+];
+
+let MOCK_DISPATCH_SETTINGS = {
+  offerDurationSeconds: 10,
+  initialRadiusMetres: {
+    BIKE: 2000,
+    AUTO: 3000,
+    CAB: 4000,
+  },
+  radiusExpansionMetres: {
+    BIKE: 1000,
+    AUTO: 1500,
+    CAB: 2000,
+  },
+  maxRadiusMetres: {
+    BIKE: 6000,
+    AUTO: 8000,
+    CAB: 10000,
+  },
+  maxRounds: 3,
+  distanceRuleBEnabled: {
+    BIKE: true,
+    AUTO: true,
+    CAB: false, // Cabs exempt by default
+  },
+  scheduledDispatchWindowMinutes: 15,
+  scheduledWorkerPollIntervalMs: 30000,
+  workerLockTtlSeconds: 120,
+};
+
+let MOCK_REVENUE_PLANS = [
+  {
+    _id: 'rev_plan_001',
+    name: 'Standard Per-Ride Commission',
+    type: 'COMMISSION',
+    commissionBasisPoints: 1500, // 15.00%
+    fixedFeePaise: 0,
+    billingCycle: 'PER_RIDE',
+    effectiveFrom: '2026-01-01T00:00:00.000Z',
+    effectiveTo: null,
+    isActive: true,
+    description: 'Default 15% platform take-rate charged on net ride fares.',
+    reason: 'Baseline platform commission economics for Maharashtra market',
+  },
+  {
+    _id: 'rev_plan_002',
+    name: 'Daily Driver Subscription Pass',
+    type: 'SUBSCRIPTION',
+    commissionBasisPoints: 0, // 0.00%
+    fixedFeePaise: 4900, // ₹49.00 / day
+    billingCycle: 'DAILY',
+    effectiveFrom: '2026-06-01T00:00:00.000Z',
+    effectiveTo: null,
+    isActive: true,
+    description: 'Zero commission for 24 hours. Fixed flat daily subscription fee for full-time captains.',
+    reason: 'Pilot program to boost driver retention during peak monsoon season',
+  },
+  {
+    _id: 'rev_plan_003',
+    name: 'Weekly Fleet Pro Pass',
+    type: 'SUBSCRIPTION',
+    commissionBasisPoints: 0,
+    fixedFeePaise: 29900, // ₹299.00 / week
+    billingCycle: 'WEEKLY',
+    effectiveFrom: '2026-08-01T00:00:00.000Z',
+    effectiveTo: null,
+    isActive: true,
+    description: 'Zero commission for 7 consecutive calendar days. Preferred by dedicated auto captains.',
+    reason: 'Expansion into Thane and Navi Mumbai high-volume corridors',
+  },
+  {
+    _id: 'rev_plan_004',
+    name: 'Legacy 20% Take Rate (Retired)',
+    type: 'COMMISSION',
+    commissionBasisPoints: 2000, // 20.00%
+    fixedFeePaise: 0,
+    billingCycle: 'PER_RIDE',
+    effectiveFrom: '2025-10-01T00:00:00.000Z',
+    effectiveTo: '2026-01-01T00:00:00.000Z',
+    isActive: false,
+    description: 'Historical alpha launch commission tier.',
+    reason: 'Superseded by 15% rate on official launch',
+  },
+];
+
 export async function handleMockRequest(url, options = {}) {
   const method = (options.method || 'GET').toUpperCase();
   const requestId = 'mock-req-' + Math.random().toString(36).slice(2, 9);
@@ -893,6 +1089,192 @@ export async function handleMockRequest(url, options = {}) {
         },
         requestId,
       },
+    };
+  }
+
+  // --- Phase D: Fare Configs, Dispatch Tunables & Revenue Plans ---
+
+  // List Fare Configs
+  if (url.includes('/fares/configs') && !url.match(/\/fares\/configs\/[a-f\d]{24}/i) && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const page = Number(parsed.searchParams.get('page')) || 1;
+    const limit = Number(parsed.searchParams.get('limit')) || 20;
+    const vehicleType = parsed.searchParams.get('vehicleType');
+    const zone = parsed.searchParams.get('zone');
+
+    let filtered = [...MOCK_FARE_CONFIGS];
+    if (vehicleType && vehicleType !== 'ALL') {
+      filtered = filtered.filter((f) => f.vehicleType === vehicleType);
+    }
+    if (zone && zone !== 'ALL') {
+      filtered = filtered.filter((f) => f.zone === zone);
+    }
+
+    const start = (page - 1) * limit;
+    const paginated = filtered.slice(start, start + limit);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: paginated,
+        meta: { total: filtered.length, page, pages: Math.ceil(filtered.length / limit) || 1, limit },
+        requestId,
+      },
+    };
+  }
+
+  // Single Fare Config
+  const fareConfigMatch = url.match(/\/fares\/configs\/([a-f\d]{24})/i);
+  if (fareConfigMatch && method === 'GET') {
+    const configId = fareConfigMatch[1];
+    const found = MOCK_FARE_CONFIGS.find((f) => f._id === configId) || MOCK_FARE_CONFIGS[0];
+    return {
+      status: 200,
+      body: { success: true, data: found, requestId },
+    };
+  }
+
+  // Create New Fare Config Version
+  if (url.includes('/fares/configs') && method === 'POST') {
+    const { vehicleType, zone = 'mumbai' } = body;
+    // Find current highest version for this vehicleType and zone
+    const existing = MOCK_FARE_CONFIGS.filter(
+      (f) => f.vehicleType === vehicleType && f.zone === zone,
+    );
+    const maxVer = existing.reduce((max, f) => Math.max(max, f.version || 1), 0);
+    const nextVer = maxVer + 1;
+
+    // Retire previous active config
+    existing.forEach((f) => {
+      if (f.isActive) {
+        f.isActive = false;
+        f.effectiveTo = body.effectiveFrom || new Date().toISOString();
+      }
+    });
+
+    const newConfig = {
+      _id: '65f0fare' + Math.random().toString(36).slice(2, 8),
+      vehicleType: body.vehicleType,
+      zone: body.zone || 'mumbai',
+      version: nextVer,
+      effectiveFrom: body.effectiveFrom || new Date().toISOString(),
+      effectiveTo: null,
+      isActive: true,
+      baseFarePaise: body.baseFarePaise,
+      perKmPaise: body.perKmPaise,
+      perMinutePaise: body.perMinutePaise,
+      minimumFarePaise: body.minimumFarePaise,
+      minimumBillableDistanceMetres: body.minimumBillableDistanceMetres || 1500,
+      waitingGracePeriodMinutes: body.waitingGracePeriodMinutes || 3,
+      waitingChargePerMinutePaise: body.waitingChargePerMinutePaise || 0,
+      surgeEnabled: Boolean(body.surgeEnabled),
+      surgeMultiplierMax: body.surgeMultiplierMax || 1.0,
+      taxes: body.taxes || [{ label: 'GST', basisPoints: 500 }],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      createdBy: { displayName: 'Super Admin', email: 'superadmin@vrumm.dev' },
+      reason: body.reason,
+    };
+
+    MOCK_FARE_CONFIGS.unshift(newConfig);
+
+    return {
+      status: 201,
+      body: { success: true, data: newConfig, requestId },
+    };
+  }
+
+  // Public Fare Quote
+  if (url.includes('/fares/quote') && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const vehicleType = parsed.searchParams.get('vehicleType') || 'BIKE';
+    const cfg =
+      MOCK_FARE_CONFIGS.find((f) => f.vehicleType === vehicleType && f.isActive) ||
+      MOCK_FARE_CONFIGS[0];
+
+    const estimatedDistanceMetres = 4500;
+    const distanceKm = estimatedDistanceMetres / 1000;
+    const distanceFarePaise = Math.round(distanceKm * cfg.perKmPaise);
+    const durationMinutes = 12;
+    const timeFarePaise = Math.round(durationMinutes * cfg.perMinutePaise);
+    const subtotal = Math.max(cfg.baseFarePaise + distanceFarePaise + timeFarePaise, cfg.minimumFarePaise);
+    const taxPaise = Math.round((subtotal * 500) / 10000); // 5% GST
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: {
+          totalPaise: subtotal + taxPaise,
+          breakdown: {
+            baseFarePaise: cfg.baseFarePaise,
+            distanceCharge: {
+              distanceMetres: estimatedDistanceMetres,
+              ratePerKmPaise: cfg.perKmPaise,
+              amountPaise: distanceFarePaise,
+            },
+            timeCharge: {
+              durationMinutes,
+              ratePerMinutePaise: cfg.perMinutePaise,
+              amountPaise: timeFarePaise,
+            },
+            subtotalPaise: subtotal,
+            totalTaxPaise: taxPaise,
+          },
+          fareConfigId: cfg._id,
+          fareConfigVersion: cfg.version,
+        },
+        requestId,
+      },
+    };
+  }
+
+  // Get Dispatch Settings
+  if (url.includes('/settings/dispatch') && method === 'GET') {
+    return {
+      status: 200,
+      body: { success: true, data: MOCK_DISPATCH_SETTINGS, requestId },
+    };
+  }
+
+  // Update Dispatch Settings
+  if (url.includes('/settings/dispatch') && method === 'PATCH') {
+    Object.assign(MOCK_DISPATCH_SETTINGS, body);
+    MOCK_DISPATCH_SETTINGS.lastUpdated = new Date().toISOString();
+    return {
+      status: 200,
+      body: { success: true, data: MOCK_DISPATCH_SETTINGS, requestId },
+    };
+  }
+
+  // List Revenue Plans
+  if (url.includes('/revenue-plans') && method === 'GET') {
+    return {
+      status: 200,
+      body: { success: true, data: MOCK_REVENUE_PLANS, requestId },
+    };
+  }
+
+  // Create Revenue Plan Version
+  if (url.includes('/revenue-plans') && method === 'POST') {
+    const newPlan = {
+      _id: 'rev_plan_' + Math.random().toString(36).slice(2, 8),
+      name: body.name,
+      type: body.type,
+      commissionBasisPoints: body.commissionBasisPoints ?? 1500,
+      fixedFeePaise: body.fixedFeePaise ?? 0,
+      billingCycle: body.billingCycle || 'PER_RIDE',
+      effectiveFrom: body.effectiveFrom || new Date().toISOString(),
+      isActive: true,
+      description: body.description,
+      reason: body.reason,
+      createdAt: new Date().toISOString(),
+    };
+    MOCK_REVENUE_PLANS.unshift(newPlan);
+    return {
+      status: 201,
+      body: { success: true, data: newPlan, requestId },
     };
   }
 
