@@ -117,7 +117,7 @@ export function ConfirmWithReasonDialog({
               if (error) setError(null);
             }}
             placeholder="State the operational reason for this change (e.g. customer stranded, dispatch deadlock, manual override)..."
-            className="w-full bg-white dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] rounded-xl p-3 text-xs text-[#171717] dark:text-[#F4F6F5] placeholder:text-[#5E6A64]/70 dark:placeholder:text-[#9AA6A0]/70 focus:outline-none focus:ring-2 focus:ring-[#A31C18] focus:border-transparent transition-all"
+            className="w-full bg-white dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] rounded-xl p-3 text-xs text-[#171717] dark:text-[#F4F6F5] placeholder:text-[#5E6A64]/70 dark:placeholder:text-[#9AA6A0]/70 focus:outline-none focus:ring-2 focus:ring-[#A31C18] focus:border-transparent focus:shadow-[0_0_16px_rgba(163,28,24,0.22)] transition-all"
             disabled={isSubmitting}
           />
           <div className="flex items-center justify-between text-[11px] text-[#5E6A64] dark:text-[#9AA6A0]">

@@ -244,7 +244,7 @@ export function FaresPage() {
                   key={cfg._id}
                   className={`p-5 transition-all ${
                     cfg.isActive
-                      ? 'border-[#15803D]/40 bg-white dark:bg-[#171717] shadow-sm'
+                      ? 'border-[#15803D]/40 dark:border-[#1FD88A]/40 ring-1 ring-[#15803D]/20 dark:ring-[#1FD88A]/20 bg-white dark:bg-[#171717] shadow-sm'
                       : 'border-[#E2E8E4] dark:border-[#2A322D] opacity-75 bg-[#F5F7F6]/50 dark:bg-[#06110C]/40'
                   }`}
                 >

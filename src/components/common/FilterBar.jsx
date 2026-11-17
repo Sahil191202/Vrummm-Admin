@@ -35,7 +35,7 @@ export function FilterBar({
           value={searchQuery}
           onChange={(e) => onSearchChange?.(e.target.value)}
           placeholder="Search by ID, customer, address..."
-          className="w-full bg-[#F5F7F6] dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] rounded-xl pl-9 pr-9 py-2 text-xs text-[#171717] dark:text-[#F4F6F5] placeholder:text-[#5E6A64] dark:placeholder:text-[#9AA6A0] focus:outline-none focus:ring-2 focus:ring-[#A31C18] min-h-[44px]"
+          className="w-full bg-[#F5F7F6] dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] rounded-xl pl-9 pr-9 py-2 text-xs text-[#171717] dark:text-[#F4F6F5] placeholder:text-[#5E6A64] dark:placeholder:text-[#9AA6A0] focus:outline-none focus:ring-2 focus:ring-[#A31C18] focus:border-transparent focus:shadow-[0_0_16px_rgba(163,28,24,0.22)] min-h-[44px] transition-all"
         />
         {searchQuery && (
           <button

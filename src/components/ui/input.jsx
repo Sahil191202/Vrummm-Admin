@@ -34,7 +34,7 @@ export const Input = React.forwardRef(
               'text-[#171717] dark:text-[#F4F6F5]',
               'border border-[#E2E8E4] dark:border-[#2A322D]',
               'placeholder:text-[#5E6A64]/70 dark:placeholder:text-[#9AA6A0]/70',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A31C18] focus-visible:border-transparent',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A31C18] focus-visible:border-transparent focus-visible:shadow-[0_0_16px_rgba(163,28,24,0.22)]',
               'disabled:cursor-not-allowed disabled:opacity-50',
               Icon && 'pl-10',
               error && 'border-[#DC2626] dark:border-[#FF5A52] focus-visible:ring-[#DC2626] dark:focus-visible:ring-[#FF5A52]',

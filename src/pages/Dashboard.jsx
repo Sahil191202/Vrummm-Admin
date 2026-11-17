@@ -29,6 +29,10 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '.
 import { formatPaise } from '../utils/formatters';
 import { useLiveDashboard } from '../hooks/useLiveDashboard';
 import { bookingService } from '../services/bookingService';
+import {
+  CountUp,
+  OrbitalLoader,
+} from '../components/reactbits';
 
 const ON_DUTY_OPERATORS = [
   { name: 'Sanjay Deshmukh', initials: 'SD' },
@@ -131,7 +135,7 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* 4 Live Metric Cards with Socket Updates */}
+      {/* 4 Live Metric Cards with CountUp */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Active Rides */}
         <Card glow className="p-5 flex flex-col justify-between">
@@ -146,7 +150,7 @@ export function Dashboard() {
           </div>
           <div className="mt-4">
             <p className="text-2xl sm:text-3xl font-black text-[#171717] dark:text-[#F4F6F5] tracking-tight font-mono">
-              {counts.activeRides.toLocaleString()}
+              <CountUp to={counts.activeRides} duration={1} />
             </p>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0] mt-0.5">
               Active Rides in Progress
@@ -166,7 +170,7 @@ export function Dashboard() {
           </div>
           <div className="mt-4">
             <p className="text-2xl sm:text-3xl font-black text-[#171717] dark:text-[#F4F6F5] tracking-tight font-mono">
-              {counts.searchingBookings.toLocaleString()}
+              <CountUp to={counts.searchingBookings} duration={1} />
             </p>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0] mt-0.5">
               Searching Bookings
@@ -186,7 +190,7 @@ export function Dashboard() {
           </div>
           <div className="mt-4">
             <p className="text-2xl sm:text-3xl font-black text-[#171717] dark:text-[#F4F6F5] tracking-tight font-mono">
-              {counts.onlineCaptains.toLocaleString()}
+              <CountUp to={counts.onlineCaptains} duration={1} />
             </p>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0] mt-0.5">
               Online Available Captains

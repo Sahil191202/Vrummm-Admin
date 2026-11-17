@@ -75,7 +75,7 @@ export function Header() {
               <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-[#F5F7F6] dark:bg-[#171717] text-[#5E6A64] dark:text-[#9AA6A0] font-medium border border-[#E2E8E4] dark:border-[#2A322D]">
                 Admin
               </span>
-              <Badge variant="forest" className="text-[10px] py-0 px-2 hidden md:inline-flex">
+              <Badge variant="forest" className="text-[10px] py-0.5 px-2 hidden md:inline-flex font-semibold">
                 Mumbai Cluster
               </Badge>
             </div>
@@ -115,7 +115,9 @@ export function Header() {
           }`}
         >
           <span className={`w-2 h-2 rounded-full ${isMockApi ? 'bg-[#F5B301] animate-pulse' : 'bg-[#15803D] dark:bg-[#1FD88A]'}`} />
-          <span className="hidden md:inline">{isMockApi ? 'MOCK API' : 'LIVE API :4000'}</span>
+          <span className="hidden md:inline font-mono font-bold">
+            {isMockApi ? 'MOCK API' : 'LIVE API :4000'}
+          </span>
         </button>
 
         {/* Notifications Icon */}

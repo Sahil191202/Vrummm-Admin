@@ -18,6 +18,7 @@ import { documentService } from '../services/documentService';
 import { DataTable } from '../components/common/DataTable';
 import { FilterBar } from '../components/common/FilterBar';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/card';
+import { CountUp } from '../components/reactbits';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { PermissionGuard } from '../components/auth/PermissionGuard';
@@ -214,13 +215,13 @@ export function DocumentsPage() {
         </Button>
       </div>
 
-      {/* 4 Summary Stat Cards */}
+      {/* 4 Summary Stat Cards with CountUp */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="p-4 flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0]">Total in Queue</p>
             <p className="text-2xl font-black text-[#171717] dark:text-[#F4F6F5] font-mono mt-1">
-              {total}
+              <CountUp to={total} duration={0.8} />
             </p>
           </div>
           <div className="w-10 h-10 rounded-xl bg-[#F5F7F6] dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] flex items-center justify-center text-[#15803D] dark:text-[#1FD88A]">
@@ -232,7 +233,7 @@ export function DocumentsPage() {
           <div>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0]">Pending Audit</p>
             <p className="text-2xl font-black text-[#B45309] dark:text-[#F5B301] font-mono mt-1">
-              {captains.filter((c) => c.approvalStatus === 'PENDING').length}
+              <CountUp to={captains.filter((c) => c.approvalStatus === 'PENDING').length} duration={0.8} />
             </p>
           </div>
           <div className="w-10 h-10 rounded-xl bg-[#F5F7F6] dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] flex items-center justify-center text-[#B45309] dark:text-[#F5B301]">
@@ -244,7 +245,7 @@ export function DocumentsPage() {
           <div>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0]">Approved Fleet</p>
             <p className="text-2xl font-black text-[#15803D] dark:text-[#1FD88A] font-mono mt-1">
-              {captains.filter((c) => c.approvalStatus === 'APPROVED').length}
+              <CountUp to={captains.filter((c) => c.approvalStatus === 'APPROVED').length} duration={0.8} />
             </p>
           </div>
           <div className="w-10 h-10 rounded-xl bg-[#F5F7F6] dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] flex items-center justify-center text-[#15803D] dark:text-[#1FD88A]">
@@ -256,7 +257,7 @@ export function DocumentsPage() {
           <div>
             <p className="text-xs font-semibold text-[#5E6A64] dark:text-[#9AA6A0]">Rejected / Suspended</p>
             <p className="text-2xl font-black text-[#DC2626] dark:text-[#FF5A52] font-mono mt-1">
-              {captains.filter((c) => c.approvalStatus === 'REJECTED' || c.approvalStatus === 'SUSPENDED').length}
+              <CountUp to={captains.filter((c) => c.approvalStatus === 'REJECTED' || c.approvalStatus === 'SUSPENDED').length} duration={0.8} />
             </p>
           </div>
           <div className="w-10 h-10 rounded-xl bg-[#F5F7F6] dark:bg-[#0B1A13] border border-[#E2E8E4] dark:border-[#2A322D] flex items-center justify-center text-[#DC2626] dark:text-[#FF5A52]">

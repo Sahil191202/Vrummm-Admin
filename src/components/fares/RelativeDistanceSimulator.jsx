@@ -242,10 +242,10 @@ export function RelativeDistanceSimulator({
                   : 'bg-[#FBE9E8] dark:bg-[#2A0F0E] text-[#DC2626] dark:text-[#FF5A52] border-[#DC2626]/30'
               }`}
             >
-              <span className="font-bold">
+              <span className="font-bold tracking-tight">
                 {evaluation.overallEligible ? 'CAPTAIN ELIGIBLE FOR OFFER' : 'CAPTAIN EXCLUDED FROM DISPATCH'}
               </span>
-              <span className="text-[11px] font-mono">
+              <span className="text-[11px] font-mono font-medium">
                 {evaluation.overallEligible ? 'Offer Dispatched' : 'Skipped in Round 1'}
               </span>
             </div>
