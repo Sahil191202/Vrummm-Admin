@@ -8,6 +8,9 @@ import { DocumentsPage } from '../pages/DocumentsPage';
 import { CaptainDocumentDetailPage } from '../pages/CaptainDocumentDetailPage';
 import { FaresPage } from '../pages/FaresPage';
 import { RevenuePlansPage } from '../pages/RevenuePlansPage';
+import { PromotionsPage } from '../pages/PromotionsPage';
+import { IncentivesPage } from '../pages/IncentivesPage';
+import { PaymentsPage } from '../pages/PaymentsPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { NotFound } from '../pages/NotFound';
 import { AdminLayout } from '../components/layout/AdminLayout';
@@ -96,12 +99,7 @@ export function AppRoutes() {
           path="promotions"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.PROMOTIONS_READ}>
-              <PlaceholderPage
-                title="Customer Promotions"
-                phase="Phase E"
-                requiredPermission={PERMISSIONS.PROMOTIONS_READ}
-                description="Promo codes, first-ride discounts, maximum caps in paise, and validity windows"
-              />
+              <PromotionsPage />
             </ProtectedRoute>
           }
         />
@@ -110,12 +108,7 @@ export function AppRoutes() {
           path="incentives"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.PROMOTIONS_READ}>
-              <PlaceholderPage
-                title="Captain Incentives"
-                phase="Phase E"
-                requiredPermission={PERMISSIONS.PROMOTIONS_READ}
-                description="Daily/weekly targets, peak-hour bonuses, and referral reward management"
-              />
+              <IncentivesPage />
             </ProtectedRoute>
           }
         />
@@ -124,12 +117,7 @@ export function AppRoutes() {
           path="payments"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.PAYMENTS_READ}>
-              <PlaceholderPage
-                title="Payments, Ledger & Reconciliation"
-                phase="Phase E"
-                requiredPermission={PERMISSIONS.PAYMENTS_READ}
-                description="Read-only append-only financial ledger, adjustment entries & simulated refunds"
-              />
+              <PaymentsPage />
             </ProtectedRoute>
           }
         />

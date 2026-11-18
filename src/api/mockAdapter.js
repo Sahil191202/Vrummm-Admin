@@ -797,6 +797,485 @@ let MOCK_REVENUE_PLANS = [
   },
 ];
 
+let MOCK_PROMOTIONS = [
+  {
+    _id: '65f0promo000000000000001',
+    code: 'VRUMM50',
+    description: '50% off up to ₹50 on rides in Mumbai cluster',
+    discountType: 'PERCENTAGE',
+    discountValue: 50,
+    maxDiscountPaise: 5000, // ₹50.00
+    minRideFarePaise: 10000, // ₹100.00
+    firstRideOnly: false,
+    allowedVehicleTypes: ['BIKE', 'AUTO', 'CAB'],
+    maxTotalRedemptions: 5000,
+    currentRedemptions: 1420,
+    maxPerUserRedemptions: 3,
+    startsAt: '2026-10-01T00:00:00.000Z',
+    expiresAt: '2026-12-31T23:59:59.000Z',
+    isActive: true,
+    reason: 'Festive season customer acquisition drive across Mumbai',
+    createdAt: '2026-10-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0promo000000000000002',
+    code: 'FIRST100',
+    description: 'Flat ₹100 off on your very first ride',
+    discountType: 'FLAT',
+    discountValue: 10000, // ₹100.00 in paise
+    maxDiscountPaise: 10000,
+    minRideFarePaise: 12000, // ₹120.00
+    firstRideOnly: true,
+    allowedVehicleTypes: ['BIKE', 'AUTO', 'CAB'],
+    maxTotalRedemptions: 2000,
+    currentRedemptions: 890,
+    maxPerUserRedemptions: 1,
+    startsAt: '2026-09-01T00:00:00.000Z',
+    expiresAt: '2026-12-31T23:59:59.000Z',
+    isActive: true,
+    reason: 'Welcome onboarding incentive for new riders',
+    createdAt: '2026-09-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0promo000000000000003',
+    code: 'MUMBAIAUTO',
+    description: '20% discount on all Auto bookings up to ₹30',
+    discountType: 'PERCENTAGE',
+    discountValue: 20,
+    maxDiscountPaise: 3000, // ₹30.00
+    minRideFarePaise: 4000, // ₹40.00
+    firstRideOnly: false,
+    allowedVehicleTypes: ['AUTO'],
+    maxTotalRedemptions: 10000,
+    currentRedemptions: 2150,
+    maxPerUserRedemptions: 5,
+    startsAt: '2026-10-15T00:00:00.000Z',
+    expiresAt: '2026-11-30T23:59:59.000Z',
+    isActive: true,
+    reason: 'Encourage short-distance suburban auto ridership',
+    createdAt: '2026-10-15T00:00:00.000Z',
+  },
+  {
+    _id: '65f0promo000000000000004',
+    code: 'BANDRABIKER',
+    description: 'Flat ₹25 off on quick bike taxi trips',
+    discountType: 'FLAT',
+    discountValue: 2500, // ₹25.00
+    maxDiscountPaise: 2500,
+    minRideFarePaise: 5000, // ₹50.00
+    firstRideOnly: false,
+    allowedVehicleTypes: ['BIKE'],
+    maxTotalRedemptions: 3000,
+    currentRedemptions: 630,
+    maxPerUserRedemptions: 2,
+    startsAt: '2026-10-20T00:00:00.000Z',
+    expiresAt: '2026-11-25T23:59:59.000Z',
+    isActive: true,
+    reason: 'Metro station last-mile commuter booster',
+    createdAt: '2026-10-20T00:00:00.000Z',
+  },
+  {
+    _id: '65f0promo000000000000005',
+    code: 'AIRPORTCAB',
+    description: '15% discount up to ₹150 on airport cab drops',
+    discountType: 'PERCENTAGE',
+    discountValue: 15,
+    maxDiscountPaise: 15000, // ₹150.00
+    minRideFarePaise: 40000, // ₹400.00
+    firstRideOnly: false,
+    allowedVehicleTypes: ['CAB'],
+    maxTotalRedemptions: 1500,
+    currentRedemptions: 310,
+    maxPerUserRedemptions: 2,
+    startsAt: '2026-10-01T00:00:00.000Z',
+    expiresAt: '2026-12-31T23:59:59.000Z',
+    isActive: true,
+    reason: 'Capture high-value airport transit volume at T1 and T2',
+    createdAt: '2026-10-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0promo000000000000006',
+    code: 'MONSOON20',
+    description: '20% off during heavy monsoon showers (Expired)',
+    discountType: 'PERCENTAGE',
+    discountValue: 20,
+    maxDiscountPaise: 5000,
+    minRideFarePaise: 10000,
+    firstRideOnly: false,
+    allowedVehicleTypes: ['BIKE', 'AUTO', 'CAB'],
+    maxTotalRedemptions: 1000,
+    currentRedemptions: 1000,
+    maxPerUserRedemptions: 1,
+    startsAt: '2026-08-01T00:00:00.000Z',
+    expiresAt: '2026-09-30T23:59:59.000Z',
+    isActive: false,
+    reason: 'Seasonal campaign completed successfully',
+    createdAt: '2026-08-01T00:00:00.000Z',
+  },
+];
+
+let MOCK_INCENTIVES = [
+  {
+    _id: '65f0inc0000000000000001',
+    name: 'Bandra-BKC Peak Hour 5-Ride Boost',
+    description: 'Complete 5 peak-hour rides between 8 AM - 12 PM in Mumbai cluster',
+    targetType: 'PEAK_HOUR',
+    targetCount: 5,
+    rewardAmountPaise: 25000, // ₹250.00
+    startsAt: '2026-10-01T00:00:00.000Z',
+    expiresAt: '2026-11-30T23:59:59.000Z',
+    isActive: true,
+    completedCount: 384,
+    reason: 'Maintain supply liquidity in BKC financial district during rush hours',
+    createdAt: '2026-10-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0inc0000000000000002',
+    name: 'Weekly Auto Marathon 40',
+    description: 'Complete 40 completed trips in one calendar week',
+    targetType: 'WEEKLY_RIDES',
+    targetCount: 40,
+    rewardAmountPaise: 200000, // ₹2,000.00
+    startsAt: '2026-10-01T00:00:00.000Z',
+    expiresAt: '2026-12-31T23:59:59.000Z',
+    isActive: true,
+    completedCount: 142,
+    reason: 'Reward full-time committed drivers and reduce churn',
+    createdAt: '2026-10-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0inc0000000000000003',
+    name: 'Daily Bike Express 12',
+    description: 'Complete 12 bike taxi rides in a single calendar day',
+    targetType: 'DAILY_RIDES',
+    targetCount: 12,
+    rewardAmountPaise: 35000, // ₹350.00
+    startsAt: '2026-10-15T00:00:00.000Z',
+    expiresAt: '2026-11-30T23:59:59.000Z',
+    isActive: true,
+    completedCount: 520,
+    reason: 'Drive rapid turnaround for short inner-city trips',
+    createdAt: '2026-10-15T00:00:00.000Z',
+  },
+  {
+    _id: '65f0inc0000000000000004',
+    name: 'Captain Referral Reward',
+    description: 'Refer a new captain who completes their first verified ride',
+    targetType: 'REFERRAL',
+    targetCount: 1,
+    rewardAmountPaise: 50000, // ₹500.00
+    startsAt: '2026-09-01T00:00:00.000Z',
+    expiresAt: '2026-12-31T23:59:59.000Z',
+    isActive: true,
+    completedCount: 95,
+    reason: 'Peer recruitment incentive for qualified commercial badge holders',
+    createdAt: '2026-09-01T00:00:00.000Z',
+  },
+  {
+    _id: '65f0inc0000000000000005',
+    name: 'Late Night Thane Surge (Archived)',
+    description: 'Complete 4 midnight rides between 11 PM and 4 AM',
+    targetType: 'PEAK_HOUR',
+    targetCount: 4,
+    rewardAmountPaise: 30000, // ₹300.00
+    startsAt: '2026-08-01T00:00:00.000Z',
+    expiresAt: '2026-09-30T23:59:59.000Z',
+    isActive: false,
+    completedCount: 68,
+    reason: 'Seasonal midnight demand trial concluded',
+    createdAt: '2026-08-01T00:00:00.000Z',
+  },
+];
+
+let MOCK_PAYMENTS = [
+  {
+    _id: '65f0pay0000000000000001',
+    rideId: '65f01a0123456789012345a1',
+    customerUserId: '65f0usr0000000000000001',
+    customerName: 'Aarav Patel',
+    customerPhone: '+919876500001',
+    captainUserId: '65f0capt000000000000001',
+    captainName: 'Suresh Kamble',
+    vehicleNumber: 'MH02BZ4921',
+    amountPaise: 9500, // ₹95.00
+    currency: 'INR',
+    status: 'CAPTURED',
+    provider: 'RAZORPAY',
+    providerOrderId: 'order_RZP_A10091',
+    providerPaymentId: 'pay_RZP_A10091_CAP',
+    refundReason: null,
+    refundedAt: null,
+    createdAt: '2026-10-30T05:35:00.000Z',
+    updatedAt: '2026-10-30T05:35:00.000Z',
+  },
+  {
+    _id: '65f0pay0000000000000002',
+    rideId: '65f01a0123456789012345a2',
+    customerUserId: '65f0usr0000000000000002',
+    customerName: 'Priya Sharma',
+    customerPhone: '+919876500002',
+    captainUserId: '65f0capt000000000000002',
+    captainName: 'Ramesh Jadhav',
+    vehicleNumber: 'MH01AB1234',
+    amountPaise: 19500, // ₹195.00
+    currency: 'INR',
+    status: 'CAPTURED',
+    provider: 'RAZORPAY',
+    providerOrderId: 'order_RZP_B20042',
+    providerPaymentId: 'pay_RZP_B20042_CAP',
+    refundReason: null,
+    refundedAt: null,
+    createdAt: '2026-10-30T05:22:00.000Z',
+    updatedAt: '2026-10-30T05:22:00.000Z',
+  },
+  {
+    _id: '65f0pay0000000000000003',
+    rideId: '65f01a0123456789012345a3',
+    customerUserId: '65f0usr0000000000000003',
+    customerName: 'Vikram Joshi',
+    customerPhone: '+919876500003',
+    captainUserId: null,
+    captainName: 'Unassigned',
+    vehicleNumber: '—',
+    amountPaise: 68000, // ₹680.00
+    currency: 'INR',
+    status: 'PENDING',
+    provider: 'MOCK',
+    providerOrderId: 'order_MCK_C30018',
+    providerPaymentId: null,
+    refundReason: null,
+    refundedAt: null,
+    createdAt: '2026-10-30T05:25:00.000Z',
+    updatedAt: '2026-10-30T05:25:00.000Z',
+  },
+  {
+    _id: '65f0pay0000000000000004',
+    rideId: '65f01a0123456789012345a4',
+    customerUserId: '65f0usr0000000000000004',
+    customerName: 'Pooja Iyer',
+    customerPhone: '+919876500004',
+    captainUserId: '65f0capt000000000000003',
+    captainName: 'Ganesh Shinde',
+    vehicleNumber: 'MH03CD5678',
+    amountPaise: 8000, // ₹80.00
+    currency: 'INR',
+    status: 'REFUNDED_SIMULATED',
+    provider: 'RAZORPAY',
+    providerOrderId: 'order_RZP_D40055',
+    providerPaymentId: 'pay_RZP_D40055_CAP',
+    refundReason: 'Customer canceled due to cash surcharge dispute. Simulated refund processed for audit compliance.',
+    refundedAt: '2026-10-30T05:00:00.000Z',
+    createdAt: '2026-10-30T04:45:00.000Z',
+    updatedAt: '2026-10-30T05:00:00.000Z',
+  },
+  {
+    _id: '65f0pay0000000000000005',
+    rideId: '65f01a0123456789012345a5',
+    customerUserId: '65f0usr0000000000000005',
+    customerName: 'Rohan Desai',
+    customerPhone: '+919876500005',
+    captainUserId: '65f0capt000000000000004',
+    captainName: 'Vinod More',
+    vehicleNumber: 'MH04EF9012',
+    amountPaise: 14500, // ₹145.00
+    currency: 'INR',
+    status: 'CAPTURED',
+    provider: 'RAZORPAY',
+    providerOrderId: 'order_RZP_E50077',
+    providerPaymentId: 'pay_RZP_E50077_CAP',
+    refundReason: null,
+    refundedAt: null,
+    createdAt: '2026-10-30T04:30:00.000Z',
+    updatedAt: '2026-10-30T04:30:00.000Z',
+  },
+  {
+    _id: '65f0pay0000000000000006',
+    rideId: '65f01a0123456789012345a6',
+    customerUserId: '65f0usr0000000000000006',
+    customerName: 'Sneha Kulkarni',
+    customerPhone: '+919876500006',
+    captainUserId: '65f0capt000000000000001',
+    captainName: 'Suresh Kamble',
+    vehicleNumber: 'MH02BZ4921',
+    amountPaise: 42000, // ₹420.00
+    currency: 'INR',
+    status: 'CAPTURED',
+    provider: 'RAZORPAY',
+    providerOrderId: 'order_RZP_F60088',
+    providerPaymentId: 'pay_RZP_F60088_CAP',
+    refundReason: null,
+    refundedAt: null,
+    createdAt: '2026-10-30T04:15:00.000Z',
+    updatedAt: '2026-10-30T04:15:00.000Z',
+  },
+  {
+    _id: '65f0pay0000000000000007',
+    rideId: '65f01a0123456789012345a7',
+    customerUserId: '65f0usr0000000000000007',
+    customerName: 'Amit Varma',
+    customerPhone: '+919876500007',
+    captainUserId: null,
+    captainName: 'Unassigned',
+    vehicleNumber: '—',
+    amountPaise: 25000, // ₹250.00
+    currency: 'INR',
+    status: 'FAILED',
+    provider: 'MOCK',
+    providerOrderId: 'order_MCK_G70099',
+    providerPaymentId: null,
+    refundReason: null,
+    refundedAt: null,
+    createdAt: '2026-10-30T04:00:00.000Z',
+    updatedAt: '2026-10-30T04:00:00.000Z',
+  },
+];
+
+let MOCK_LEDGER_ENTRIES = [
+  {
+    _id: '65f0ledg0000000000000001',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'CREDIT',
+    amountPaise: 19500, // ₹195.00
+    entryType: 'FARE_COLLECTED',
+    rideId: '65f01a0123456789012345a2',
+    paymentId: '65f0pay0000000000000002',
+    description: 'Ride fare captured from Priya Sharma',
+    reason: 'Automated settlement of completed ride',
+    createdAt: '2026-10-30T05:22:01.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000002',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'CREDIT',
+    amountPaise: 2925, // ₹29.25 (15% commission)
+    entryType: 'COMMISSION_EARNED',
+    rideId: '65f01a0123456789012345a2',
+    paymentId: '65f0pay0000000000000002',
+    description: '15.00% platform commission on ₹195.00 ride',
+    reason: 'Revenue share policy Vrumm Standard 15%',
+    createdAt: '2026-10-30T05:22:02.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000003',
+    accountUserId: '65f0capt0000000000000002',
+    accountType: 'CAPTAIN',
+    direction: 'CREDIT',
+    amountPaise: 16575, // ₹165.75 (85% captain share)
+    entryType: 'CAPTAIN_EARNING',
+    rideId: '65f01a0123456789012345a2',
+    paymentId: '65f0pay0000000000000002',
+    description: 'Net driver earnings credited to Ramesh Jadhav',
+    reason: 'Driver payout allocation',
+    createdAt: '2026-10-30T05:22:03.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000004',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'CREDIT',
+    amountPaise: 9500, // ₹95.00
+    entryType: 'FARE_COLLECTED',
+    rideId: '65f01a0123456789012345a1',
+    paymentId: '65f0pay0000000000000001',
+    description: 'Ride fare captured from Aarav Patel',
+    reason: 'Automated settlement of completed ride',
+    createdAt: '2026-10-30T05:35:01.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000005',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'CREDIT',
+    amountPaise: 1425, // ₹14.25 (15% commission)
+    entryType: 'COMMISSION_EARNED',
+    rideId: '65f01a0123456789012345a1',
+    paymentId: '65f0pay0000000000000001',
+    description: '15.00% platform commission on ₹95.00 ride',
+    reason: 'Revenue share policy Vrumm Standard 15%',
+    createdAt: '2026-10-30T05:35:02.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000006',
+    accountUserId: '65f0capt0000000000000001',
+    accountType: 'CAPTAIN',
+    direction: 'CREDIT',
+    amountPaise: 8075, // ₹80.75 (85% captain share)
+    entryType: 'CAPTAIN_EARNING',
+    rideId: '65f01a0123456789012345a1',
+    paymentId: '65f0pay0000000000000001',
+    description: 'Net driver earnings credited to Suresh Kamble',
+    reason: 'Driver payout allocation',
+    createdAt: '2026-10-30T05:35:03.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000007',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'DEBIT',
+    amountPaise: 8000, // ₹80.00
+    entryType: 'ADJUSTMENT',
+    rideId: '65f01a0123456789012345a4',
+    paymentId: '65f0pay0000000000000004',
+    description: 'Simulated refund debit for canceled ride #a4',
+    reason: 'Customer canceled due to cash surcharge dispute. Simulated refund processed for audit compliance.',
+    createdAt: '2026-10-30T05:00:05.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000008',
+    accountUserId: '65f0capt0000000000000001',
+    accountType: 'CAPTAIN',
+    direction: 'DEBIT',
+    amountPaise: 150000, // ₹1,500.00
+    entryType: 'CAPTAIN_PAYOUT_SIMULATED',
+    rideId: null,
+    paymentId: null,
+    description: 'Weekly automated batch payout to Suresh Kamble (MH02BZ4921)',
+    reason: 'Weekly driver payout run',
+    createdAt: '2026-10-29T18:30:00.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000009',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'CREDIT',
+    amountPaise: 14500, // ₹145.00
+    entryType: 'FARE_COLLECTED',
+    rideId: '65f01a0123456789012345a5',
+    paymentId: '65f0pay0000000000000005',
+    description: 'Ride fare captured from Rohan Desai',
+    reason: 'Automated settlement of completed ride',
+    createdAt: '2026-10-30T04:30:01.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000010',
+    accountUserId: '65f0plat0000000000000000',
+    accountType: 'PLATFORM',
+    direction: 'CREDIT',
+    amountPaise: 2175, // ₹21.75
+    entryType: 'COMMISSION_EARNED',
+    rideId: '65f01a0123456789012345a5',
+    paymentId: '65f0pay0000000000000005',
+    description: '15.00% platform commission on ₹145.00 ride',
+    reason: 'Revenue share policy Vrumm Standard 15%',
+    createdAt: '2026-10-30T04:30:02.000Z',
+  },
+  {
+    _id: '65f0ledg0000000000000011',
+    accountUserId: '65f0capt0000000000000004',
+    accountType: 'CAPTAIN',
+    direction: 'CREDIT',
+    amountPaise: 12325, // ₹123.25
+    entryType: 'CAPTAIN_EARNING',
+    rideId: '65f01a0123456789012345a5',
+    paymentId: '65f0pay0000000000000005',
+    description: 'Net driver earnings credited to Vinod More',
+    reason: 'Driver payout allocation',
+    createdAt: '2026-10-30T04:30:03.000Z',
+  },
+];
+
 export async function handleMockRequest(url, options = {}) {
   const method = (options.method || 'GET').toUpperCase();
   const requestId = 'mock-req-' + Math.random().toString(36).slice(2, 9);
@@ -1275,6 +1754,520 @@ export async function handleMockRequest(url, options = {}) {
     return {
       status: 201,
       body: { success: true, data: newPlan, requestId },
+    };
+  }
+
+  // --- PHASE E: PROMOTIONS ---
+
+  // Validate Promo Code (Customer / Simulator)
+  if (url.includes('/promotions/validate') && method === 'POST') {
+    const code = (body.code || '').trim().toUpperCase();
+    const rideFarePaise = Number(body.rideFarePaise || 0);
+    const vehicleType = body.vehicleType || 'BIKE';
+
+    const promo = MOCK_PROMOTIONS.find((p) => p.code.toUpperCase() === code);
+    if (!promo) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: { valid: false, reason: `Promotion code '${code}' is invalid or does not exist.` },
+          requestId,
+        },
+      };
+    }
+
+    if (!promo.isActive) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: { valid: false, reason: `Promotion code '${code}' is currently inactive.` },
+          requestId,
+        },
+      };
+    }
+
+    if (promo.expiresAt && new Date(promo.expiresAt) <= new Date()) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: { valid: false, reason: `Promotion code '${code}' expired on ${new Date(promo.expiresAt).toLocaleDateString()}.` },
+          requestId,
+        },
+      };
+    }
+
+    if (promo.startsAt && new Date(promo.startsAt) > new Date()) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: { valid: false, reason: `Promotion code '${code}' is scheduled to start on ${new Date(promo.startsAt).toLocaleDateString()}.` },
+          requestId,
+        },
+      };
+    }
+
+    if (promo.allowedVehicleTypes && !promo.allowedVehicleTypes.includes(vehicleType)) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: {
+            valid: false,
+            reason: `Promo code '${code}' is only eligible for: ${promo.allowedVehicleTypes.join(', ')}. Not applicable for ${vehicleType}.`,
+          },
+          requestId,
+        },
+      };
+    }
+
+    if (promo.minRideFarePaise && rideFarePaise < promo.minRideFarePaise) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: {
+            valid: false,
+            reason: `Ride fare of ₹${(rideFarePaise / 100).toFixed(2)} is below the minimum required fare of ₹${(promo.minRideFarePaise / 100).toFixed(2)}.`,
+          },
+          requestId,
+        },
+      };
+    }
+
+    if (promo.maxTotalRedemptions && promo.currentRedemptions >= promo.maxTotalRedemptions) {
+      return {
+        status: 200,
+        body: {
+          success: true,
+          data: { valid: false, reason: `Promotion code '${code}' has reached its total maximum redemption limit.` },
+          requestId,
+        },
+      };
+    }
+
+    let discountAmountPaise = 0;
+    if (promo.discountType === 'PERCENTAGE') {
+      const calculated = Math.round((rideFarePaise * promo.discountValue) / 100);
+      discountAmountPaise = promo.maxDiscountPaise ? Math.min(calculated, promo.maxDiscountPaise) : calculated;
+    } else {
+      discountAmountPaise = Math.min(promo.discountValue, rideFarePaise);
+    }
+
+    const finalFarePaise = Math.max(0, rideFarePaise - discountAmountPaise);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: {
+          valid: true,
+          discountAmountPaise,
+          finalFarePaise,
+          code: promo.code,
+          discountType: promo.discountType,
+          discountValue: promo.discountValue,
+          description: promo.description,
+        },
+        requestId,
+      },
+    };
+  }
+
+  // Get Single Promotion
+  const promoMatch = url.match(/\/promotions\/([a-zA-Z0-9_-]+)$/);
+  if (promoMatch && method === 'GET') {
+    const promo = MOCK_PROMOTIONS.find((p) => p._id === promoMatch[1] || p.code === promoMatch[1]);
+    if (!promo) {
+      return {
+        status: 404,
+        body: { success: false, error: { code: 'NOT_FOUND', message: 'Promotion not found' }, requestId },
+      };
+    }
+    return {
+      status: 200,
+      body: { success: true, data: promo, requestId },
+    };
+  }
+
+  // List Promotions
+  if (url.includes('/promotions') && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const search = parsed.searchParams.get('search')?.toLowerCase();
+    const isActiveParam = parsed.searchParams.get('isActive');
+    const page = parseInt(parsed.searchParams.get('page') || '1', 10);
+    const limit = parseInt(parsed.searchParams.get('limit') || '20', 10);
+
+    let filtered = [...MOCK_PROMOTIONS];
+    if (search) {
+      filtered = filtered.filter(
+        (p) => p.code.toLowerCase().includes(search) || (p.description && p.description.toLowerCase().includes(search)),
+      );
+    }
+    if (isActiveParam !== null && isActiveParam !== undefined && isActiveParam !== 'ALL') {
+      const shouldBeActive = isActiveParam === 'true';
+      filtered = filtered.filter((p) => p.isActive === shouldBeActive);
+    }
+
+    const total = filtered.length;
+    const pages = Math.ceil(total / limit) || 1;
+    const start = (page - 1) * limit;
+    const data = filtered.slice(start, start + limit);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data,
+        meta: { total, page, limit, pages },
+        requestId,
+      },
+    };
+  }
+
+  // Create Promotion
+  if (url.includes('/promotions') && method === 'POST') {
+    if (!body.reason || body.reason.trim().length < 5) {
+      return {
+        status: 400,
+        body: { success: false, error: { code: 'VALIDATION_ERROR', message: 'Written justification of >= 5 chars required' }, requestId },
+      };
+    }
+
+    const newPromo = {
+      _id: '65f0promo' + Math.random().toString(36).slice(2, 12),
+      code: body.code.toUpperCase().trim(),
+      description: body.description?.trim() || '',
+      discountType: body.discountType,
+      discountValue: body.discountValue,
+      maxDiscountPaise: body.maxDiscountPaise,
+      minRideFarePaise: body.minRideFarePaise || 0,
+      firstRideOnly: Boolean(body.firstRideOnly),
+      allowedVehicleTypes: body.allowedVehicleTypes || ['BIKE', 'AUTO', 'CAB'],
+      maxTotalRedemptions: body.maxTotalRedemptions || null,
+      currentRedemptions: 0,
+      maxPerUserRedemptions: body.maxPerUserRedemptions || 1,
+      startsAt: body.startsAt || new Date().toISOString(),
+      expiresAt: body.expiresAt,
+      isActive: true,
+      reason: body.reason,
+      createdAt: new Date().toISOString(),
+    };
+    MOCK_PROMOTIONS.unshift(newPromo);
+
+    return {
+      status: 201,
+      body: { success: true, data: newPromo, requestId },
+    };
+  }
+
+  // --- PHASE E: INCENTIVES ---
+
+  // Get Single Incentive Campaign
+  const incentiveMatch = url.match(/\/incentives\/([a-zA-Z0-9_-]+)$/);
+  if (incentiveMatch && method === 'GET') {
+    const campaign = MOCK_INCENTIVES.find((c) => c._id === incentiveMatch[1]);
+    if (!campaign) {
+      return {
+        status: 404,
+        body: { success: false, error: { code: 'NOT_FOUND', message: 'Incentive campaign not found' }, requestId },
+      };
+    }
+    return {
+      status: 200,
+      body: { success: true, data: campaign, requestId },
+    };
+  }
+
+  // List Incentive Campaigns
+  if (url.includes('/incentives') && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const targetType = parsed.searchParams.get('targetType');
+    const isActiveParam = parsed.searchParams.get('isActive');
+    const page = parseInt(parsed.searchParams.get('page') || '1', 10);
+    const limit = parseInt(parsed.searchParams.get('limit') || '20', 10);
+
+    let filtered = [...MOCK_INCENTIVES];
+    if (targetType && targetType !== 'ALL') {
+      filtered = filtered.filter((c) => c.targetType === targetType);
+    }
+    if (isActiveParam !== null && isActiveParam !== undefined && isActiveParam !== 'ALL') {
+      const shouldBeActive = isActiveParam === 'true';
+      filtered = filtered.filter((c) => c.isActive === shouldBeActive);
+    }
+
+    const total = filtered.length;
+    const pages = Math.ceil(total / limit) || 1;
+    const start = (page - 1) * limit;
+    const data = filtered.slice(start, start + limit);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data,
+        meta: { total, page, limit, pages },
+        requestId,
+      },
+    };
+  }
+
+  // Create Incentive Campaign
+  if (url.includes('/incentives') && method === 'POST') {
+    if (!body.reason || body.reason.trim().length < 5) {
+      return {
+        status: 400,
+        body: { success: false, error: { code: 'VALIDATION_ERROR', message: 'Written justification of >= 5 chars required' }, requestId },
+      };
+    }
+
+    const newCampaign = {
+      _id: '65f0inc' + Math.random().toString(36).slice(2, 12),
+      name: body.name.trim(),
+      description: body.description?.trim() || '',
+      targetType: body.targetType,
+      targetCount: Number(body.targetCount),
+      rewardAmountPaise: Number(body.rewardAmountPaise),
+      startsAt: body.startsAt || new Date().toISOString(),
+      expiresAt: body.expiresAt,
+      isActive: true,
+      completedCount: 0,
+      reason: body.reason,
+      createdAt: new Date().toISOString(),
+    };
+    MOCK_INCENTIVES.unshift(newCampaign);
+
+    return {
+      status: 201,
+      body: { success: true, data: newCampaign, requestId },
+    };
+  }
+
+  // --- PHASE E: PAYMENTS & REFUNDS ---
+
+  // Payment by Ride
+  const paymentRideMatch = url.match(/\/payments\/ride\/([a-zA-Z0-9_-]+)$/);
+  if (paymentRideMatch && method === 'GET') {
+    const payment = MOCK_PAYMENTS.find((p) => p.rideId === paymentRideMatch[1]);
+    return {
+      status: 200,
+      body: { success: true, data: payment || null, requestId },
+    };
+  }
+
+  // Simulate Payment Refund
+  const refundMatch = url.match(/\/payments\/([a-zA-Z0-9_-]+)\/refund\/simulate$/);
+  if (refundMatch && method === 'POST') {
+    const payment = MOCK_PAYMENTS.find((p) => p._id === refundMatch[1]);
+    if (!payment) {
+      return {
+        status: 404,
+        body: { success: false, error: { code: 'NOT_FOUND', message: 'Payment record not found' }, requestId },
+      };
+    }
+
+    if (!body.reason || body.reason.trim().length < 5) {
+      return {
+        status: 400,
+        body: {
+          success: false,
+          error: { code: 'VALIDATION_ERROR', message: 'A detailed reason of at least 5 characters is required for refund simulation' },
+          requestId,
+        },
+      };
+    }
+
+    payment.status = 'REFUNDED_SIMULATED';
+    payment.refundReason = body.reason.trim();
+    payment.refundedAt = new Date().toISOString();
+    payment.updatedAt = new Date().toISOString();
+
+    // Strictly append-only: create reversal entry in ledger
+    const ledgerReversal = {
+      _id: '65f0ledg' + Math.random().toString(36).slice(2, 12),
+      accountUserId: '65f0plat0000000000000000',
+      accountType: 'PLATFORM',
+      direction: 'DEBIT',
+      amountPaise: payment.amountPaise,
+      entryType: 'ADJUSTMENT',
+      rideId: payment.rideId,
+      paymentId: payment._id,
+      description: `Simulated refund reversal for payment ${payment._id}`,
+      reason: body.reason.trim(),
+      createdAt: new Date().toISOString(),
+    };
+    MOCK_LEDGER_ENTRIES.unshift(ledgerReversal);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: {
+          payment,
+          refundId: 'sim_rfnd_' + Math.random().toString(36).slice(2, 10),
+          status: 'REFUNDED_SIMULATED',
+          simulated: true,
+          message: 'SIMULATED REFUND - LEARNING ENVIRONMENT ONLY. Financial balance reversed in append-only ledger.',
+        },
+        requestId,
+      },
+    };
+  }
+
+  // List Payments
+  if (url.includes('/payments') && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const status = parsed.searchParams.get('status');
+    const rideId = parsed.searchParams.get('rideId');
+    const customerUserId = parsed.searchParams.get('customerUserId');
+    const captainUserId = parsed.searchParams.get('captainUserId');
+    const page = parseInt(parsed.searchParams.get('page') || '1', 10);
+    const limit = parseInt(parsed.searchParams.get('limit') || '20', 10);
+
+    let filtered = [...MOCK_PAYMENTS];
+    if (status && status !== 'ALL') {
+      filtered = filtered.filter((p) => p.status === status);
+    }
+    if (rideId) {
+      filtered = filtered.filter((p) => p.rideId === rideId);
+    }
+    if (customerUserId) {
+      filtered = filtered.filter((p) => p.customerUserId === customerUserId);
+    }
+    if (captainUserId) {
+      filtered = filtered.filter((p) => p.captainUserId === captainUserId);
+    }
+
+    const total = filtered.length;
+    const pages = Math.ceil(total / limit) || 1;
+    const start = (page - 1) * limit;
+    const data = filtered.slice(start, start + limit);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data,
+        meta: { total, page, limit, pages },
+        requestId,
+      },
+    };
+  }
+
+  // --- PHASE E: LEDGER & RECONCILIATION ---
+
+  // Ledger Balance
+  if (url.includes('/ledger/balance') && method === 'GET') {
+    // Balance is Platform total credits minus platform total debits
+    const platformCredits = MOCK_LEDGER_ENTRIES
+      .filter((e) => e.accountType === 'PLATFORM' && e.direction === 'CREDIT')
+      .reduce((sum, e) => sum + (e.amountPaise || 0), 0);
+
+    const platformDebits = MOCK_LEDGER_ENTRIES
+      .filter((e) => e.accountType === 'PLATFORM' && e.direction === 'DEBIT')
+      .reduce((sum, e) => sum + (e.amountPaise || 0), 0);
+
+    const balancePaise = platformCredits - platformDebits;
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data: {
+          balancePaise,
+          currency: 'INR',
+          totalCreditsPaise: platformCredits,
+          totalDebitsPaise: platformDebits,
+        },
+        requestId,
+      },
+    };
+  }
+
+  // Create Ledger Adjustment Entry (Append-only)
+  if (url.includes('/ledger/adjustments') && method === 'POST') {
+    if (!body.reason || body.reason.trim().length < 5) {
+      return {
+        status: 400,
+        body: {
+          success: false,
+          error: { code: 'VALIDATION_ERROR', message: 'Reason of at least 5 characters is required for manual adjustments' },
+          requestId,
+        },
+      };
+    }
+    if (!body.accountType || !body.direction || !body.amountPaise) {
+      return {
+        status: 400,
+        body: {
+          success: false,
+          error: { code: 'VALIDATION_ERROR', message: 'accountType, direction, and amountPaise are required' },
+          requestId,
+        },
+      };
+    }
+
+    const newEntry = {
+      _id: '65f0ledg' + Math.random().toString(36).slice(2, 12),
+      accountUserId: body.accountUserId || '65f0plat0000000000000000',
+      accountType: body.accountType,
+      direction: body.direction,
+      amountPaise: Number(body.amountPaise),
+      entryType: 'ADJUSTMENT',
+      rideId: body.rideId || null,
+      paymentId: body.paymentId || null,
+      description: body.description?.trim() || 'Manual ledger audit adjustment',
+      reason: body.reason.trim(),
+      createdAt: new Date().toISOString(),
+    };
+    MOCK_LEDGER_ENTRIES.unshift(newEntry);
+
+    return {
+      status: 201,
+      body: { success: true, data: newEntry, requestId },
+    };
+  }
+
+  // List Ledger Entries (Read-only immutable stream)
+  if (url.includes('/ledger/entries') && method === 'GET') {
+    const parsed = new URL(url, 'http://localhost');
+    const accountType = parsed.searchParams.get('accountType');
+    const entryType = parsed.searchParams.get('entryType');
+    const rideId = parsed.searchParams.get('rideId');
+    const paymentId = parsed.searchParams.get('paymentId');
+    const page = parseInt(parsed.searchParams.get('page') || '1', 10);
+    const limit = parseInt(parsed.searchParams.get('limit') || '20', 10);
+
+    let filtered = [...MOCK_LEDGER_ENTRIES];
+    if (accountType && accountType !== 'ALL') {
+      filtered = filtered.filter((e) => e.accountType === accountType);
+    }
+    if (entryType && entryType !== 'ALL') {
+      filtered = filtered.filter((e) => e.entryType === entryType);
+    }
+    if (rideId) {
+      filtered = filtered.filter((e) => e.rideId === rideId);
+    }
+    if (paymentId) {
+      filtered = filtered.filter((e) => e.paymentId === paymentId);
+    }
+
+    const total = filtered.length;
+    const pages = Math.ceil(total / limit) || 1;
+    const start = (page - 1) * limit;
+    const data = filtered.slice(start, start + limit);
+
+    return {
+      status: 200,
+      body: {
+        success: true,
+        data,
+        meta: { total, page, limit, pages },
+        requestId,
+      },
     };
   }
 
