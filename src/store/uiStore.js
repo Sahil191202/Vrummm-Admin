@@ -4,7 +4,6 @@ import { translations } from '../i18n/translations';
 // Dark is the default look as specified in brand rules
 const SAVED_THEME = (typeof window !== 'undefined' ? localStorage.getItem('vrumm_theme') : null) || 'dark';
 const SAVED_LANG = (typeof window !== 'undefined' ? localStorage.getItem('vrumm_lang') : null) || 'en';
-const SAVED_MOCK = (typeof window !== 'undefined' ? localStorage.getItem('vrumm_use_mock') === 'true' : false);
 
 export function createTranslator(lang) {
   return (path) => {
@@ -56,7 +55,7 @@ export const useUIStore = create((set, get) => ({
   theme: SAVED_THEME,
   language: SAVED_LANG,
   sidebarOpen: true,
-  isMockApi: SAVED_MOCK, // labeled and OFF by default
+  isMockApi: false, // Live Backend API (:4000) permanently active
   t: createTranslator(SAVED_LANG),
 
   setTheme: (theme) => {
@@ -96,11 +95,11 @@ export const useUIStore = create((set, get) => ({
     set({ sidebarOpen: isOpen });
   },
 
-  setMockApi: (enabled) => {
+  setMockApi: () => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('vrumm_use_mock', String(enabled));
+      localStorage.removeItem('vrumm_use_mock');
     }
-    set({ isMockApi: enabled });
+    set({ isMockApi: false });
   },
 }));
 

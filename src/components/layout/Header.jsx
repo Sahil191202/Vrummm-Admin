@@ -23,8 +23,6 @@ export function Header() {
   const language = useUIStore((s) => s.language);
   const setLanguage = useUIStore((s) => s.setLanguage);
   const toggleSidebar = useUIStore((s) => s.toggleSidebar);
-  const isMockApi = useUIStore((s) => s.isMockApi);
-  const setMockApi = useUIStore((s) => s.setMockApi);
   const t = useUIStore((s) => s.t);
 
   const [langMenuOpen, setLangMenuOpen] = useState(false);
@@ -104,21 +102,16 @@ export function Header() {
 
       {/* Right controls */}
       <div className="flex items-center gap-2 sm:gap-3">
-        {/* Mock API Mode Indicator */}
-        <button
-          onClick={() => setMockApi(!isMockApi)}
-          title={isMockApi ? 'Mock API active. Click to switch to Live Backend.' : 'Live API mode. Click to enable Mock adapter.'}
-          className={`min-h-[36px] px-3 py-1 text-xs font-semibold rounded-full border flex items-center gap-2 transition-all ${
-            isMockApi
-              ? 'bg-[#F5B301]/10 text-[#F5B301] border-[#F5B301]/30 hover:bg-[#F5B301]/20'
-              : 'bg-[#15803D]/10 dark:bg-[#0B1A13] text-[#15803D] dark:text-[#1FD88A] border-[#15803D]/30 dark:border-[#1FD88A]/30 hover:shadow-card-glow'
-          }`}
+        {/* Live Backend API Mode Indicator */}
+        <div
+          title="Connected to Live Vrumm Backend API (port 4000) & MongoDB replica set"
+          className="min-h-[36px] px-3 py-1 text-xs font-semibold rounded-full border flex items-center gap-2 bg-[#15803D]/10 dark:bg-[#0B1A13] text-[#15803D] dark:text-[#1FD88A] border-[#15803D]/30 dark:border-[#1FD88A]/30 shadow-sm"
         >
-          <span className={`w-2 h-2 rounded-full ${isMockApi ? 'bg-[#F5B301] animate-pulse' : 'bg-[#15803D] dark:bg-[#1FD88A]'}`} />
+          <span className="w-2 h-2 rounded-full bg-[#15803D] dark:bg-[#1FD88A] animate-pulse" />
           <span className="hidden md:inline font-mono font-bold">
-            {isMockApi ? 'MOCK API' : 'LIVE API :4000'}
+            LIVE API :4000
           </span>
-        </button>
+        </div>
 
         {/* Notifications Icon */}
         <button

@@ -56,6 +56,10 @@ export function Dialog({ open, onOpenChange, children, className, maxWidth = 'ma
   );
 }
 
+export function DialogContent({ children, className, ...props }) {
+  return <div className={cn('w-full', className)} {...props}>{children}</div>;
+}
+
 export function DialogHeader({ className, ...props }) {
   return <div className={cn('flex flex-col space-y-1.5 text-left mb-4', className)} {...props} />;
 }

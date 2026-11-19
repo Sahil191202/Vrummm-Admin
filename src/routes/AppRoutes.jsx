@@ -11,6 +11,9 @@ import { RevenuePlansPage } from '../pages/RevenuePlansPage';
 import { PromotionsPage } from '../pages/PromotionsPage';
 import { IncentivesPage } from '../pages/IncentivesPage';
 import { PaymentsPage } from '../pages/PaymentsPage';
+import { SafetyPage } from '../pages/SafetyPage';
+import { AuditLogsPage } from '../pages/AuditLogsPage';
+import { SettingsPage } from '../pages/SettingsPage';
 import { PlaceholderPage } from '../pages/PlaceholderPage';
 import { NotFound } from '../pages/NotFound';
 import { AdminLayout } from '../components/layout/AdminLayout';
@@ -126,12 +129,7 @@ export function AppRoutes() {
           path="incidents"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.INCIDENTS_READ}>
-              <PlaceholderPage
-                title="Safety Incidents & Support Tickets"
-                phase="Phase F"
-                requiredPermission={PERMISSIONS.INCIDENTS_READ}
-                description="State history, incident escalation, resolution logs and emergency response records"
-              />
+              <SafetyPage />
             </ProtectedRoute>
           }
         />
@@ -140,12 +138,7 @@ export function AppRoutes() {
           path="audit"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.AUDIT_READ}>
-              <PlaceholderPage
-                title="Analytics & Audit Logs"
-                phase="Phase F"
-                requiredPermission={PERMISSIONS.AUDIT_READ}
-                description="Immutable log of sensitive actions (actor, action, target, timestamp, requestId, reason)"
-              />
+              <AuditLogsPage />
             </ProtectedRoute>
           }
         />
@@ -154,12 +147,7 @@ export function AppRoutes() {
           path="settings"
           element={
             <ProtectedRoute requiredPermission={PERMISSIONS.SETTINGS_READ}>
-              <PlaceholderPage
-                title="Application Settings"
-                phase="Phase F"
-                requiredPermission={PERMISSIONS.SETTINGS_READ}
-                description="System flags, commercial launch disabled lock & demo parameters"
-              />
+              <SettingsPage />
             </ProtectedRoute>
           }
         />

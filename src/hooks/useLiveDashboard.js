@@ -1,27 +1,22 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { socketService } from '../services/socketService';
-import { useUIStore } from '../store/uiStore';
 import { apiClient } from '../api/client';
 
 /**
  * useLiveDashboard hook:
- * - Subscribes to live Socket.IO ops.dashboardUpdate events with deduplication.
- * - On socket reconnect, triggers a REST refetch to ensure consistent metrics.
- * - In Mock API mode or when socket server is disconnected, periodically polls REST.
+ * - Subscribes to live Socket.IO ops.dashboardUpdate events.
+ * - Polls and refetches live backend REST overview (/ops/overview) on connect, reconnect, and interval.
  */
 export function useLiveDashboard() {
-  const isMockApi = useUIStore((s) => s.isMockApi);
   const [counts, setCounts] = useState({
-    activeRides: 2845,
-    searchingBookings: 142,
-    onlineCaptains: 1420,
+    activeRides: 0,
+    searchingBookings: 0,
+    onlineCaptains: 0,
     openSafetyAlerts: 0,
-    todayFareVolumePaise: 48235000,
+    todayFareVolumePaise: 0,
     lastUpdated: new Date().toISOString(),
   });
-  const [connectionStatus, setConnectionStatus] = useState(
-    isMockApi ? 'MOCK' : 'CONNECTING',
-  );
+  const [connectionStatus, setConnectionStatus] = useState('CONNECTING');
   const [incidentAlerts, setIncidentAlerts] = useState([]);
 
   const fetchRestOverview = useCallback(async () => {
@@ -35,7 +30,7 @@ export function useLiveDashboard() {
         }));
       }
     } catch {
-      // If REST endpoint is not yet provided by backend, keep current display
+      // Endpoint error handling
     }
   }, []);
 
@@ -45,20 +40,6 @@ export function useLiveDashboard() {
   }, [fetchRestOverview]);
 
   useEffect(() => {
-    if (isMockApi) {
-      setConnectionStatus('MOCK');
-      // Gentle polling for mock updates
-      const interval = setInterval(() => {
-        setCounts((prev) => ({
-          ...prev,
-          activeRides: prev.activeRides + Math.floor(Math.random() * 5) - 2,
-          searchingBookings: Math.max(10, prev.searchingBookings + Math.floor(Math.random() * 3) - 1),
-          lastUpdated: new Date().toISOString(),
-        }));
-      }, 5000);
-      return () => clearInterval(interval);
-    }
-
     // Live Socket connection
     const socket = socketService.connect();
 
@@ -95,13 +76,19 @@ export function useLiveDashboard() {
     // Initial fetch
     fetchRestOverview();
 
+    // Background refresh interval every 15s to guarantee fresh cluster state
+    const refreshInterval = setInterval(() => {
+      fetchRef.current();
+    }, 15000);
+
     return () => {
+      clearInterval(refreshInterval);
       socket.off('connect', handleConnect);
       socket.off('disconnect', handleDisconnect);
       socketService.off('ops.dashboardUpdate', handleDashboardUpdate);
       socketService.off('safety.incident', handleSafetyIncident);
     };
-  }, [isMockApi, fetchRestOverview]);
+  }, [fetchRestOverview]);
 
   return {
     counts,

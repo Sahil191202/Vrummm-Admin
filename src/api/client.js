@@ -1,6 +1,4 @@
 import { useAuthStore } from '../store/authStore';
-import { useUIStore } from '../store/uiStore';
-import { handleMockRequest } from './mockAdapter';
 
 export const API_BASE_URL = import.meta.env.VITE_API_URL || '/api/v1';
 
@@ -37,24 +35,9 @@ function processQueue(error, token = null) {
 }
 
 export async function apiClient(endpoint, options = {}) {
-  const isMock = useUIStore.getState().isMockApi;
-
   const url = endpoint.startsWith('http')
     ? endpoint
     : `${API_BASE_URL}${endpoint.startsWith('/') ? '' : '/'}${endpoint}`;
-
-  if (isMock) {
-    const res = await handleMockRequest(url, options);
-    if (!res.body.success) {
-      throw new ApiError(res.body.error?.message || 'Mock request failed', {
-        code: res.body.error?.code || 'ERROR',
-        status: res.status,
-        details: res.body.error?.details,
-        requestId: res.body.requestId,
-      });
-    }
-    return res.body;
-  }
 
   const requestId = generateRequestId();
   const headers = {

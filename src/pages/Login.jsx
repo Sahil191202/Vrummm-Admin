@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Shield, Lock, Mail, AlertCircle, ArrowRight, ToggleLeft, ToggleRight, Sparkles } from 'lucide-react';
+import { Shield, Lock, Mail, AlertCircle, ArrowRight, Sparkles } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { useUIStore } from '../store/uiStore';
 import { authService } from '../services/authService';
@@ -26,8 +26,6 @@ export function Login() {
 
   const language = useUIStore((s) => s.language);
   const t = useUIStore((s) => s.t);
-  const isMockApi = useUIStore((s) => s.isMockApi);
-  const setMockApi = useUIStore((s) => s.setMockApi);
 
   const [email, setEmail] = useState('superadmin@vrumm.dev');
   const [password, setPassword] = useState(DEFAULT_SEED_PASSWORD);
@@ -105,29 +103,20 @@ export function Login() {
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white border border-[#E2E8E4] dark:bg-[#171717] dark:border-[#2A322D] py-8 px-5 shadow-xl rounded-2xl sm:px-10">
-          {/* Mock Adapter toggle notice */}
+          {/* Live Backend status badge */}
           <div className="mb-6 p-3 rounded-xl bg-[#F5F7F6] border border-[#E2E8E4] dark:bg-[#0B1A13] dark:border-[#2A322D] flex items-center justify-between">
             <div className="text-xs">
-              <p className="font-semibold text-[#171717] dark:text-[#F4F6F5]">API Mode</p>
+              <p className="font-semibold text-[#171717] dark:text-[#F4F6F5] flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#15803D] dark:bg-[#1FD88A] animate-pulse" />
+                Live Backend Connected
+              </p>
               <p className="text-[11px] text-[#5E6A64] dark:text-[#9AA6A0]">
-                {isMockApi ? 'Mock Adapter (Offline)' : 'Backend API (port 4000)'}
+                Express :4000 • MongoDB Replica Set rs0
               </p>
             </div>
-            <button
-              type="button"
-              onClick={() => setMockApi(!isMockApi)}
-              className="min-h-[36px] flex items-center gap-1.5 text-xs text-[#171717] dark:text-[#F4F6F5] px-3 py-1.5 rounded-lg bg-white border border-[#E2E8E4] hover:bg-[#F5F7F6] dark:bg-[#171717] dark:border-[#2A322D] dark:hover:bg-[#06110C] transition-colors"
-            >
-              {isMockApi ? (
-                <span className="text-[#B45309] dark:text-[#F5B301] font-bold flex items-center gap-1.5">
-                  MOCK ON <ToggleRight className="w-4 h-4 text-[#B45309] dark:text-[#F5B301]" />
-                </span>
-              ) : (
-                <span className="text-[#15803D] dark:text-[#1FD88A] font-bold flex items-center gap-1.5">
-                  LIVE API <ToggleLeft className="w-4 h-4 text-[#15803D] dark:text-[#1FD88A]" />
-                </span>
-              )}
-            </button>
+            <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-[#15803D]/10 text-[#15803D] dark:bg-[#1FD88A]/10 dark:text-[#1FD88A] border border-[#15803D]/20 dark:border-[#1FD88A]/20">
+              LIVE
+            </span>
           </div>
 
           {errorMessage && (

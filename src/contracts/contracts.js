@@ -2,6 +2,8 @@
  * Client contracts mirroring backend domain contracts.
  */
 
+export { PERMISSIONS, ROLES } from './rbac';
+
 export const PAYMENT_STATUSES = Object.freeze([
   'PENDING',
   'CAPTURED',
@@ -33,3 +35,32 @@ export const INCENTIVE_TARGET_TYPES = Object.freeze([
 ]);
 
 export const VEHICLE_TYPES = Object.freeze(['BIKE', 'AUTO', 'CAB']);
+
+export const INCIDENT_TYPES = Object.freeze([
+  'SOS_SIMULATED',
+  'ACCIDENT',
+  'HARASSMENT',
+  'ROUTE_DEVIATION',
+  'OTHER',
+]);
+
+export const INCIDENT_SEVERITIES = Object.freeze(['LOW', 'MEDIUM', 'HIGH', 'CRITICAL']);
+
+export const INCIDENT_STATUSES = Object.freeze([
+  'REPORTED',
+  'INVESTIGATING',
+  'RESOLVED',
+  'DISMISSED',
+]);
+
+export const SUPPORT_TICKET_CATEGORIES = Object.freeze([
+  'BILLING',
+  'RIDE_ISSUE',
+  'ACCOUNT',
+  'SAFETY',
+  'OTHER',
+]);
+
+export const SUPPORT_TICKET_STATUSES = Object.freeze(['OPEN', 'IN_PROGRESS', 'RESOLVED', 'CLOSED']);
+
+export const SUPPORT_TICKET_PRIORITIES = Object.freeze(['LOW', 'NORMAL', 'HIGH', 'URGENT']);
